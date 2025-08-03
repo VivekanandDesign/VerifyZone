@@ -40,6 +40,13 @@ class GlobalNavbar {
                             <li><a href="${basePath}index.html#customers">Customers</a></li>
                             <li><a href="${basePath}index.html#testimonials">Testimonials</a></li>
                             <li><a href="${basePath}blog.html" ${this.currentPage === 'blog' ? 'class="active"' : ''}>Blog</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle">Dashboards ▼</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="${basePath}dashboard1/index.html">V-Zone Analytics</a></li>
+                                    <li><a href="${basePath}dashboard2/index.html">X-Zone Management</a></li>
+                                </ul>
+                            </li>
                             <li><a href="${basePath}index.html#contact">Contact</a></li>
                         </ul>
                     </nav>

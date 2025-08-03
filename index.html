@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VerifyZone - Landing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/navbar.js"></script>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="white"/>
+                    <path d="M8 12L20 28L32 12H26L20 20L14 12H8Z" fill="#361968"/>
+                    <circle cx="20" cy="10" r="2" fill="#361968"/>
+                </svg>
+                <h1>VerifyZone</h1>
+            </div>
+            <nav class="nav" id="navMenu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#customers">Customers</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Welcome to VerifyZone</h1>
+                    <p>Your ultimate solution for data analytics and management</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary" onclick="openWaitingList('V-Zone')">Join V-Zone Waiting List</a>
+                        <a href="#" class="btn btn-secondary" onclick="openWaitingList('X-Zone')">Join X-Zone Waiting List</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="placeholder-image">
+                        <span>Hero Image Placeholder</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Key Features</h2>
+                <div class="features-tabs">
+                    <div class="tab-navigation">
+                        <button class="tab-btn active" data-tab="analytics">
+                            <div class="tab-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 3V21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M9 9L12 6L16 10L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span>V-Zone</span>
+                        </button>
+                        <button class="tab-btn" data-tab="management">
+                            <div class="tab-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1 1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1Z" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <span>X-Zone</span>
+                        </button>
+                        <button class="tab-btn" data-tab="security">
+                            <div class="tab-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12V5L12 2L21 5V12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span>Security</span>
+                        </button>
+                        <button class="tab-btn" data-tab="automation">
+                            <div class="tab-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="5" r="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M12 7V11" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M8 21V19A2 2 0 0 1 10 17H14A2 2 0 0 1 16 19V21" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                            </div>
+                            <span>Automation</span>
+                        </button>
+                        <button class="tab-btn" data-tab="reporting">
+                            <div class="tab-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M14 2H6A2 2 0 0 0 4 4V20A2 2 0 0 0 6 22H18A2 2 0 0 0 20 20V8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <polyline points="14,2 14,8 20,8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <polyline points="10,9 9,9 8,9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span>Reporting</span>
+                        </button>
+                        <button class="tab-btn" data-tab="integration">
+                            <div class="tab-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10 13A5 5 0 0 0 14 17L17.5 13.5A5 5 0 0 0 17.5 6.5L14 3A5 5 0 0 0 10 7V13Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 11A5 5 0 0 0 10 7L6.5 10.5A5 5 0 0 0 6.5 17.5L10 21A5 5 0 0 0 14 17V11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                            <span>Integration</span>
+                        </button>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-panel active" id="analytics">
+                            <div class="feature-content">
+                                <div class="feature-text">
+                                    <h3>Advanced V-Zone Dashboard</h3>
+                                    <p>Comprehensive data visualization and analytics tools powered by AI and machine learning. Get real-time insights, predictive analytics, and customizable dashboards that help you make data-driven decisions with confidence.</p>
+                                    <ul class="feature-list">
+                                        <li>Real-time data visualization</li>
+                                        <li>Predictive analytics & forecasting</li>
+                                        <li>Custom dashboard creation</li>
+                                        <li>Interactive charts and graphs</li>
+                                    </ul>
+                                    <a href="#" class="btn btn-primary" onclick="openWaitingList('V-Zone')">Join V-Zone Waiting List</a>
+                                </div>
+                                <div class="feature-image">
+                                    <div class="placeholder-image">
+                                        <span>V-Zone Dashboard Preview</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-panel" id="management">
+                            <div class="feature-content">
+                                <div class="feature-text">
+                                    <h3>Comprehensive X-Zone Suite</h3>
+                                    <p>Streamlined management interface for controlling and monitoring your operations. Manage users, monitor system performance, and oversee all aspects of your business from one centralized location.</p>
+                                    <ul class="feature-list">
+                                        <li>User & role management</li>
+                                        <li>System monitoring & alerts</li>
+                                        <li>Resource allocation tools</li>
+                                        <li>Performance optimization</li>
+                                    </ul>
+                                    <a href="#" class="btn btn-primary" onclick="openWaitingList('X-Zone')">Join X-Zone Waiting List</a>
+                                </div>
+                                <div class="feature-image">
+                                    <div class="placeholder-image">
+                                        <span>X-Zone Dashboard Preview</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-panel" id="security">
+                            <div class="feature-content">
+                                <div class="feature-text">
+                                    <h3>Enterprise-Grade Security</h3>
+                                    <p>Bank-level security with end-to-end encryption, multi-factor authentication, and compliance with industry standards. Your data is protected with the highest security measures available.</p>
+                                    <ul class="feature-list">
+                                        <li>End-to-end encryption</li>
+                                        <li>Multi-factor authentication</li>
+                                        <li>SOC 2 & GDPR compliance</li>
+                                        <li>Regular security audits</li>
+                                    </ul>
+                                    <a href="#contact" class="btn btn-primary">Learn More</a>
+                                </div>
+                                <div class="feature-image">
+                                    <div class="placeholder-image">
+                                        <span>Security Features Overview</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-panel" id="automation">
+                            <div class="feature-content">
+                                <div class="feature-text">
+                                    <h3>Intelligent Automation</h3>
+                                    <p>Automate repetitive tasks and workflows with our intelligent automation engine. Save time, reduce errors, and increase productivity with customizable automation rules and triggers.</p>
+                                    <ul class="feature-list">
+                                        <li>Workflow automation</li>
+                                        <li>Smart triggers & conditions</li>
+                                        <li>Custom rule creation</li>
+                                        <li>Task scheduling & queuing</li>
+                                    </ul>
+                                    <a href="#contact" class="btn btn-primary">Discover Automation</a>
+                                </div>
+                                <div class="feature-image">
+                                    <div class="placeholder-image">
+                                        <span>Automation Workflows</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-panel" id="reporting">
+                            <div class="feature-content">
+                                <div class="feature-text">
+                                    <h3>Advanced Reporting Engine</h3>
+                                    <p>Generate comprehensive reports with our advanced reporting engine. Create custom reports, schedule automated deliveries, and share insights across your organization with ease.</p>
+                                    <ul class="feature-list">
+                                        <li>Custom report builder</li>
+                                        <li>Automated report scheduling</li>
+                                        <li>Multiple export formats</li>
+                                        <li>Collaborative sharing tools</li>
+                                    </ul>
+                                    <a href="#contact" class="btn btn-primary">View Reports</a>
+                                </div>
+                                <div class="feature-image">
+                                    <div class="placeholder-image">
+                                        <span>Reporting Dashboard</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-panel" id="integration">
+                            <div class="feature-content">
+                                <div class="feature-text">
+                                    <h3>Seamless Integrations</h3>
+                                    <p>Connect with your existing tools and systems through our extensive integration library. APIs, webhooks, and pre-built connectors make it easy to sync data across platforms.</p>
+                                    <ul class="feature-list">
+                                        <li>REST & GraphQL APIs</li>
+                                        <li>Webhook support</li>
+                                        <li>Pre-built connectors</li>
+                                        <li>Real-time data sync</li>
+                                    </ul>
+                                    <a href="#contact" class="btn btn-primary">Explore Integrations</a>
+                                </div>
+                                <div class="feature-image">
+                                    <div class="placeholder-image">
+                                        <span>Integration Ecosystem</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about">
+            <div class="container">
+                <div class="about-content">
+                    <h2>About VerifyZone</h2>
+                    <p>VerifyZone is a comprehensive platform designed to provide powerful analytics and management capabilities. Our dual-dashboard approach ensures that you have the right tools for both data analysis and operational management.</p>
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>10K+</h3>
+                            <p>Active Users</p>
+                        </div>
+                        <div class="stat">
+                            <h3>99.9%</h3>
+                            <p>Uptime</p>
+                        </div>
+                        <div class="stat">
+                            <h3>24/7</h3>
+                            <p>Support</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="customers" class="customers">
+            <div class="container">
+                <h2>Trusted by Leading Companies</h2>
+                <p>Join thousands of organizations that rely on VerifyZone for their analytics and management needs</p>
+                <div class="customers-grid">
+                    <div class="customer-logo">
+                        <div class="logo-placeholder">TechCorp</div>
+                    </div>
+                    <div class="customer-logo">
+                        <div class="logo-placeholder">DataFlow</div>
+                    </div>
+                    <div class="customer-logo">
+                        <div class="logo-placeholder">CloudSys</div>
+                    </div>
+                    <div class="customer-logo">
+                        <div class="logo-placeholder">InnovateLab</div>
+                    </div>
+                    <div class="customer-logo">
+                        <div class="logo-placeholder">MetricsHub</div>
+                    </div>
+                    <div class="customer-logo">
+                        <div class="logo-placeholder">SmartData</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <div class="testimonials-header">
+                    <h2>What Our Customers Say</h2>
+                    <p>Join thousands of satisfied customers who trust VerifyZone for their data analytics and management needs</p>
+                    <div class="testimonials-stats">
+                        <div class="stat-item">
+                            <div class="star-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <span class="rating-text">4.9/5 Average Rating</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Happy Customers</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">98%</span>
+                            <span class="stat-label">Satisfaction Rate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-note">
+                        <div class="note-content">
+                            <div class="quote-icon">"</div>
+                            <div class="star-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p>VerifyZone has revolutionized how we handle our data analytics. The insights we get from the V-Zone dashboard have helped us increase our revenue by 40%.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>SM</span>
+                            </div>
+                            <div class="author-info">
+                                <h4>Sarah Martinez</h4>
+                                <p>CEO, TechCorp</p>
+                                <div class="company-size">Enterprise • 500+ employees</div>
+                            </div>
+                        </div>
+                        <div class="note-pin"></div>
+                    </div>
+
+                    <div class="testimonial-note">
+                        <div class="note-content">
+                            <div class="quote-icon">"</div>
+                            <div class="star-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p>The X-Zone dashboard is incredibly intuitive. We've streamlined our operations and reduced manual work by 60% since implementing VerifyZone.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>JD</span>
+                            </div>
+                            <div class="author-info">
+                                <h4>John Davis</h4>
+                                <p>CTO, DataFlow Solutions</p>
+                                <div class="company-size">Mid-Market • 200+ employees</div>
+                            </div>
+                        </div>
+                        <div class="note-pin"></div>
+                    </div>
+
+                    <div class="testimonial-note">
+                        <div class="note-content">
+                            <div class="quote-icon">"</div>
+                            <div class="star-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p>Exceptional platform! The real-time analytics and comprehensive management tools have transformed our decision-making process completely.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>AL</span>
+                            </div>
+                            <div class="author-info">
+                                <h4>Amanda Lee</h4>
+                                <p>VP Operations, CloudSys</p>
+                                <div class="company-size">Enterprise • 1000+ employees</div>
+                            </div>
+                        </div>
+                        <div class="note-pin"></div>
+                    </div>
+
+                    <div class="testimonial-note">
+                        <div class="note-content">
+                            <div class="quote-icon">"</div>
+                            <div class="star-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p>Outstanding customer support and robust features. VerifyZone's automation capabilities have saved us countless hours every week.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>MR</span>
+                            </div>
+                            <div class="author-info">
+                                <h4>Michael Rodriguez</h4>
+                                <p>Operations Manager, InnovateLab</p>
+                                <div class="company-size">Startup • 50+ employees</div>
+                            </div>
+                        </div>
+                        <div class="note-pin"></div>
+                    </div>
+
+                    <div class="testimonial-note">
+                        <div class="note-content">
+                            <div class="quote-icon">"</div>
+                            <div class="star-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p>The reporting engine is phenomenal. We can generate custom reports in minutes and share insights across our entire organization.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>LW</span>
+                            </div>
+                            <div class="author-info">
+                                <h4>Lisa Wang</h4>
+                                <p>Data Analyst, MetricsHub</p>
+                                <div class="company-size">Scale-up • 150+ employees</div>
+                            </div>
+                        </div>
+                        <div class="note-pin"></div>
+                    </div>
+
+                    <div class="testimonial-note">
+                        <div class="note-content">
+                            <div class="quote-icon">"</div>
+                            <div class="star-rating">
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                                <span class="star">★</span>
+                            </div>
+                            <p>Seamless integrations with our existing tools made the transition effortless. VerifyZone truly understands enterprise needs.</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <div class="author-avatar">
+                                <span>TK</span>
+                            </div>
+                            <div class="author-info">
+                                <h4>Thomas Kim</h4>
+                                <p>IT Director, SmartData</p>
+                                <div class="company-size">Enterprise • 800+ employees</div>
+                            </div>
+                        </div>
+                        <div class="note-pin"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="newsletter" class="newsletter">
+            <div class="container">
+                <div class="newsletter-content">
+                    <div class="newsletter-text">
+                        <h3>Stay Updated with VerifyZone</h3>
+                        <p>Get the latest updates, tips, and insights delivered straight to your inbox</p>
+                    </div>
+                    <form class="newsletter-form" id="newsletterForm">
+                        <div class="form-group">
+                            <input type="email" id="newsletter-email" placeholder="Enter your email address" required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </div>
+                        <p class="form-disclaimer">We respect your privacy. Unsubscribe at any time.</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h2>Get in Touch</h2>
+                        <p>Ready to transform your data management and analytics? We'd love to hear from you!</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon">📧</div>
+                                <div class="contact-text">
+                                    <h4>Email Us</h4>
+                                    <p>hello@verifyzone.com</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📞</div>
+                                <div class="contact-text">
+                                    <h4>Call Us</h4>
+                                    <p>+91-1234567890</p>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+                                <div class="contact-text">
+                                    <h4>Visit Us</h4>
+                                    <p>Tech Park, Anna Salai<br>Chennai, Tamil Nadu 600002, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="contact-buttons">
+                            <a href="#" class="btn btn-primary" onclick="openWaitingList('V-Zone')">Join V-Zone Waiting List</a>
+                            <a href="#" class="btn btn-secondary" onclick="openWaitingList('X-Zone')">Join X-Zone Waiting List</a>
+                        </div>
+                    </div>
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contactForm">
+                            <h3>Send us a Message</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="firstName">First Name *</label>
+                                    <input type="text" id="firstName" name="firstName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">Last Name *</label>
+                                    <input type="text" id="lastName" name="lastName" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company">
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject *</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a subject</option>
+                                    <option value="demo">Request a Demo</option>
+                                    <option value="pricing">Pricing Information</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="partnership">Partnership Inquiry</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message *</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Tell us about your needs..." required></textarea>
+                            </div>
+                            <div class="form-group checkbox-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="newsletter-signup" name="newsletter">
+                                    <span class="checkmark"></span>
+                                    Subscribe to our newsletter for updates and insights
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Waiting List Modal -->
+    <div id="waitingListModal" class="waiting-list-modal">
+        <div class="waiting-list-modal-content">
+            <div class="waiting-list-header">
+                <div class="waiting-list-icon">
+                    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="20" fill="#9967d1" fill-opacity="0.1"/>
+                        <path d="M16 24L20 28L32 16" stroke="#361968" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h2 id="waitingListTitle">Join the Waiting List</h2>
+                <p id="waitingListSubtitle">Be among the first to experience V-Zone when we launch. Get early access and exclusive benefits!</p>
+                <button class="waiting-list-close" onclick="closeWaitingListModal()">&times;</button>
+            </div>
+            <form class="waiting-list-form" id="waitingListForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="waitingName">Full Name *</label>
+                        <input type="text" id="waitingName" name="name" required placeholder="Enter your full name">
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="waitingEmail">Email Address *</label>
+                        <input type="email" id="waitingEmail" name="email" required placeholder="Enter your email">
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="waitingPhone">Contact Number *</label>
+                        <input type="tel" id="waitingPhone" name="phone" required placeholder="+91-XXXXXXXXXX">
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="waitingCompany">Company Name *</label>
+                        <input type="text" id="waitingCompany" name="company" required placeholder="Your company name">
+                        <span class="error-message" id="companyError"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="waitingInterest">Interested In *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="vzoneInterest" name="interest" value="V-Zone">
+                            <span class="checkmark"></span>
+                            V-Zone Analytics Dashboard
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="xzoneInterest" name="interest" value="X-Zone">
+                            <span class="checkmark"></span>
+                            X-Zone Management Suite
+                        </label>
+                    </div>
+                    <span class="error-message" id="interestError"></span>
+                </div>
+                <div class="waiting-list-benefits">
+                    <h4>🎉 Early Access Benefits:</h4>
+                    <ul>
+                        <li>✅ 30-day free trial when we launch</li>
+                        <li>✅ Exclusive onboarding session</li>
+                        <li>✅ Priority customer support</li>
+                        <li>✅ Special launch pricing (50% off)</li>
+                    </ul>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full" id="waitingListSubmit">
+                    <span class="btn-text">Join Waiting List</span>
+                    <span class="btn-loader" style="display: none;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-dasharray="60" stroke-dashoffset="60" stroke-linecap="round">
+                                <animate attributeName="stroke-dashoffset" dur="2s" values="60;0" repeatCount="indefinite"/>
+                            </circle>
+                        </svg>
+                    </span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Cookie Policy Banner -->
+    <div id="cookieBanner" class="cookie-banner">
+        <div class="container">
+            <div class="cookie-content">
+                <div class="cookie-text">
+                    <h4>🍪 We use cookies</h4>
+                    <p>We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking "Accept All", you consent to our use of cookies.</p>
+                </div>
+                <div class="cookie-actions">
+                    <button onclick="acceptCookies()" class="btn btn-primary">Accept All</button>
+                    <button onclick="declineCookies()" class="btn btn-secondary">Decline</button>
+                    <a href="#privacy" class="cookie-link">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>VerifyZone</h3>
+                    <p>Empowering businesses with advanced analytics and management solutions.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <rect x="2" y="9" width="4" height="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="X (Twitter)">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="currentColor" stroke-width="2"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" stroke="currentColor" stroke-width="2"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#customers">Customers</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Dashboards</h4>
+                    <ul>
+                        <li><a href="#" onclick="return false;">V-Zone Dashboard</a></li>
+                        <li><a href="#" onclick="return false;">X-Zone Dashboard</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#privacy" onclick="showPrivacyPolicy()">Privacy Policy</a></li>
+                        <li><a href="#terms" onclick="showTermsConditions()">Terms & Conditions</a></li>
+                        <li><a href="#cookies" onclick="showCookiePolicy()">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 VerifyZone. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/waiting-list.js"></script>
+</body>
+</html>

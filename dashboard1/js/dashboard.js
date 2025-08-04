@@ -1,5 +1,8 @@
 // Dashboard functionality
 document.addEventListener('DOMContentLoaded', function() {
+    // Initialize mobile navigation
+    initializeMobileNavigation();
+
     // Navigation functionality
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
@@ -26,6 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
             if (targetSection) {
                 targetSection.classList.add('active');
             }
+
+            // Close mobile sidebar after navigation
+            closeMobileSidebar();
         });
     });
 
@@ -387,3 +393,72 @@ function startRealTimeUpdates() {
 
 // Initialize real-time updates
 setTimeout(startRealTimeUpdates, 5000);
+
+// Mobile Navigation Functions
+function initializeMobileNavigation() {
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    if (mobileMenuToggle) {
+        mobileMenuToggle.addEventListener('click', toggleMobileSidebar);
+    }
+
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', closeMobileSidebar);
+    }
+
+    // Close sidebar on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeMobileSidebar();
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            closeMobileSidebar();
+        }
+    });
+}
+
+function toggleMobileSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    
+    if (sidebar && sidebarOverlay) {
+        sidebar.classList.toggle('show');
+        sidebarOverlay.classList.toggle('show');
+        
+        // Update button icon
+        const toggleButton = document.getElementById('mobileMenuToggle');
+        if (toggleButton) {
+            toggleButton.textContent = sidebar.classList.contains('show') ? '✕' : '☰';
+        }
+
+        // Prevent body scroll when sidebar is open
+        document.body.style.overflow = sidebar.classList.contains('show') ? 'hidden' : '';
+    }
+}
+
+function closeMobileSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+    const toggleButton = document.getElementById('mobileMenuToggle');
+    
+    if (sidebar) {
+        sidebar.classList.remove('show');
+    }
+    
+    if (sidebarOverlay) {
+        sidebarOverlay.classList.remove('show');
+    }
+    
+    if (toggleButton) {
+        toggleButton.textContent = '☰';
+    }
+
+    // Restore body scroll
+    document.body.style.overflow = '';
+}

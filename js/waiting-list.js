@@ -1,5 +1,17 @@
-// Waiting List Functions
+// Enhanced Waiting List Functions - Now redirects to dashboards
 function openWaitingList(product) {
+    // Direct navigation to dashboards based on product
+    if (product === 'V-Zone') {
+        // Navigate to V-Zone Dashboard
+        window.location.href = 'dashboard1/index.html';
+        return;
+    } else if (product === 'X-Zone') {
+        // Navigate to X-Zone Dashboard
+        window.location.href = 'dashboard2/index.html';
+        return;
+    }
+    
+    // Fallback for other products - show original waiting list modal
     const modal = document.getElementById('waitingListModal');
     const title = document.getElementById('waitingListTitle');
     const subtitle = document.getElementById('waitingListSubtitle');
@@ -10,19 +22,8 @@ function openWaitingList(product) {
     document.getElementById('waitingListForm').reset();
     clearValidationErrors();
     
-    // Update content based on product
-    if (product === 'V-Zone') {
-        title.textContent = 'Join V-Zone Waiting List';
-        subtitle.textContent = 'Be among the first to experience V-Zone Analytics when we launch. Get early access and exclusive benefits!';
-        vzoneCheckbox.checked = true;
-    } else if (product === 'X-Zone') {
-        title.textContent = 'Join X-Zone Waiting List';
-        subtitle.textContent = 'Be among the first to experience X-Zone Management when we launch. Get early access and exclusive benefits!';
-        xzoneCheckbox.checked = true;
-    } else {
-        title.textContent = 'Join the Waiting List';
-        subtitle.textContent = 'Be among the first to experience VerifyZone when we launch. Get early access and exclusive benefits!';
-    }
+    title.textContent = 'Join the Waiting List';
+    subtitle.textContent = 'Be among the first to experience VerifyZone when we launch. Get early access and exclusive benefits!';
     
     // Show modal
     modal.classList.add('show');

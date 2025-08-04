@@ -23,7 +23,7 @@ class DashboardNavbar {
                             </svg>
                             <span class="brand-name">VerifyZone</span>
                         </a>
-                        <span class="dashboard-indicator">${dashboardName}</span>
+                        <span class="dashboard-indicator">${dashboardName} Dashboard</span>
                     </div>
                     <div class="nav-actions">
                         <a href="${otherDashboardPath}" class="nav-action-btn switch-dashboard" title="Switch to ${otherDashboard}">
@@ -150,29 +150,14 @@ class DashboardNavbar {
     }
 
     init() {
-        // Ensure this runs when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                this.injectNavbar();
-            });
-        } else {
-            // DOM is already loaded
-            this.injectNavbar();
-        }
-    }
-
-    injectNavbar() {
-        const navContainer = document.getElementById('top-navbar-container');
-        if (navContainer) {
-            navContainer.innerHTML = this.generateTopNavHTML();
-            console.log('Navbar injected successfully');
-            // Wait a bit for the DOM to update
-            setTimeout(() => {
+        document.addEventListener('DOMContentLoaded', () => {
+            // Add top navbar to dashboard pages
+            const navContainer = document.getElementById('top-navbar-container');
+            if (navContainer) {
+                navContainer.innerHTML = this.generateTopNavHTML();
                 this.initializeNavbarFeatures();
-            }, 100);
-        } else {
-            console.error('top-navbar-container not found');
-        }
+            }
+        });
     }
 
     initializeNavbarFeatures() {
@@ -242,25 +227,27 @@ class DashboardNavbar {
 
     initializeStickyNavbar() {
         const navbar = document.getElementById('dashboardTopNav');
-        if (!navbar) {
-            console.error('Navbar element not found for sticky functionality');
-            return;
-        }
+        if (!navbar) return;
 
-        console.log('Initializing sticky navbar');
+        let lastScrollY = window.scrollY;
         
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
             
-            // Add scrolled class for styling changes, but keep navbar always visible
             if (currentScrollY > 10) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
             }
             
-            // Remove the hide/show functionality - navbar should always be visible
-            // This ensures the navbar stays fixed at the top always
+            // Hide/show navbar on scroll
+            if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                navbar.classList.add('hidden');
+            } else {
+                navbar.classList.remove('hidden');
+            }
+            
+            lastScrollY = currentScrollY;
         });
     }
 

@@ -10,1515 +10,404 @@
     <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .login-container {
-            background: white;
-            border-radius: 6px;
-            box-shadow: 0 20px 40px rgba(54, 25, 104, 0.15);
-            overflow: hidden;
-            width: 100%;
-            max-width: 400px;
-            position: relative;
-        }
-
-        .form-header {
-            background: var(--primary-color);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .form-header h1 {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .form-header p {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-
-        .form-toggle {
-            display: flex;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            margin: 20px 0 0;
-            padding: 4px;
-        }
-
-        .toggle-btn {
-            flex: 1;
-            padding: 8px 16px;
-            background: transparent;
-            border: none;
-            color: white;
-            font-family: inherit;
-            font-size: 0.9rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .toggle-btn.active {
-            background: white;
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-
-        .form-container {
-            padding: 30px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-            position: relative;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--text-dark);
-            font-weight: 500;
-            font-size: 0.9rem;
-        }
-
-        .input-wrapper {
-            position: relative;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px 16px;
-            border: 2px solid var(--border-color);
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(153, 103, 209, 0.1);
-        }
-
-        .form-input.error {
-            border-color: var(--error-color);
-            background-color: #fdf2f2;
-        }
-
-        .form-input.success {
-            border-color: var(--success-color);
-            background-color: #f8fff9;
-        }
-
-        .input-icon {
-            position: absolute;
-            right: 12px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 20px;
-            height: 20px;
-            color: #999;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .input-icon:hover {
-            color: var(--secondary-color);
-        }
-
-        .password-toggle {
-            cursor: pointer;
-        }
-
-        .error-message {
-            color: var(--error-color);
-            font-size: 0.8rem;
-            margin-top: 5px;
-            display: none;
-        }
-
-        .form-group.error .error-message {
-            display: block;
-        }
-
-        .password-strength {
-            margin-top: 8px;
-            display: none;
-        }
-
-        .strength-bar {
-            height: 4px;
-            background: #e9ecef;
-            border-radius: 6px;
-            overflow: hidden;
-            margin-bottom: 5px;
-        }
-
-        .strength-fill {
-            height: 100%;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            width: 0%;
-        }
-
-        .strength-fill.weak {
-            background: var(--error-color);
-            width: 33%;
-        }
-
-        .strength-fill.medium {
-            background: var(--warning-color);
-            width: 66%;
-        }
-
-        .strength-fill.strong {
-            background: var(--success-color);
-            width: 100%;
-        }
-
-        .strength-text {
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
-        .strength-text.weak {
-            color: var(--error-color);
-        }
-
-        .strength-text.medium {
-            color: var(--warning-color);
-        }
-
-        .strength-text.strong {
-            color: var(--success-color);
-        }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-
-        .checkbox {
-            appearance: none;
-            width: 18px;
-            height: 18px;
-            border: 2px solid var(--border-color);
-            border-radius: 6px;
-            background: white;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .checkbox:checked {
-            background: var(--secondary-color);
-            border-color: var(--secondary-color);
-        }
-
-        .checkbox:checked::after {
-            content: "✓";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .checkbox-label {
-            font-size: 0.9rem;
-            color: var(--text-dark);
-            cursor: pointer;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 12px;
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            font-family: inherit;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .submit-btn:hover {
-            background: #2d1456;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(54, 25, 104, 0.3);
-        }
-
-        .submit-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .submit-btn.loading {
-            color: transparent;
-        }
-
-        .submit-btn.loading::after {
-            content: "";
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            top: 50%;
-            left: 50%;
-            margin-left: -10px;
-            margin-top: -10px;
-            border: 2px solid transparent;
-            border-top-color: #ffffff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .form-footer {
-            text-align: center;
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .footer-link {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        .footer-link:hover {
-            text-decoration: underline;
-        }
-
-        .forgot-password {
-            text-align: right;
-            margin-top: 10px;
-        }
-
-        .forgot-password a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-
-        .forgot-password a:hover {
-            text-decoration: underline;
-        }
-
-        .success-message {
-            background: #d4edda;
-            color: #155724;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            border: 1px solid #c3e6cb;
-            display: none;
-        }
-
-        .error-alert {
-            background: #f8d7da;
-            color: #721c24;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            border: 1px solid #f5c6cb;
-            display: none;
-        }
-
-        /* Form transitions */
-        .form-content {
-            transition: all 0.3s ease;
-        }
-
-        .form-content.slide-out {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-
-        /* Responsive Design */
-        @media (max-width: 480px) {
-            .login-container {
-                margin: 10px;
-                border-radius: 6px;
-            }
-
-            .form-header {
-                padding: 25px 20px;
-            }
-
-            .form-header h1 {
-                font-size: 1.5rem;
-            }
-
-            .form-container {
-                padding: 25px 20px;
-            }
-
-            .form-input {
-                padding: 10px 14px;
-                font-size: 16px; /* Prevents zoom on iOS */
-            }
-        }
-
-        /* Hide forms initially */
-        .registration-form {
-            display: none;
-        }
-
-        .forgot-password-form {
-            display: none;
-        }
-
-        .reset-password-form {
-            display: none;
-        }
-
-        /* Show/hide forms */
-        .show-login .login-form {
-            display: block;
-        }
-
-        .show-login .registration-form,
-        .show-login .forgot-password-form,
-        .show-login .reset-password-form {
-            display: none;
-        }
-
-        .show-register .registration-form {
-            display: block;
-        }
-
-        .show-register .login-form,
-        .show-register .forgot-password-form,
-        .show-register .reset-password-form {
-            display: none;
-        }
-
-        .show-forgot .forgot-password-form {
-            display: block;
-        }
-
-        .show-forgot .login-form,
-        .show-forgot .registration-form,
-        .show-forgot .reset-password-form {
-            display: none;
-        }
-
-        .show-reset .reset-password-form {
-            display: block;
-        }
-
-        .show-reset .login-form,
-        .show-reset .registration-form,
-        .show-reset .forgot-password-form {
-            display: none;
-        }
-
-        /* Back button */
-        .back-button {
-            background: none;
-            border: none;
-            color: var(--secondary-color);
-            font-size: 0.9rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 20px;
-            padding: 5px 0;
-            transition: color 0.3s ease;
-        }
-
-        .back-button:hover {
-            color: var(--primary-color);
-        }
-
-        .back-button svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* OTP input styling */
-        .otp-container {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin: 20px 0;
-        }
-
-        .otp-input {
-            width: 50px;
-            height: 50px;
-            text-align: center;
-            font-size: 1.2rem;
-            font-weight: 600;
-            border: 2px solid var(--border-color);
-            border-radius: 6px;
-            background: white;
-            transition: all 0.3s ease;
-        }
-
-        .otp-input:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 3px rgba(153, 103, 209, 0.1);
-        }
-
-        .otp-input.filled {
-            border-color: var(--success-color);
-            background-color: #f8fff9;
-        }
-
-        .resend-code {
-            text-align: center;
-            margin: 15px 0;
-            font-size: 0.9rem;
-            color: #666;
-        }
-
-        .resend-link {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .resend-link:hover {
-            text-decoration: underline;
-        }
-
-        .resend-link:disabled {
-            color: #ccc;
-            cursor: not-allowed;
-            text-decoration: none;
-        }
-
-        /* Email sent confirmation */
-        .email-sent-icon {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        .email-sent-icon svg {
-            width: 60px;
-            height: 60px;
-            color: var(--success-color);
-        }
-
-        .email-sent-text {
-            text-align: center;
-            color: #666;
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-    </style>
-</head>
-<body>
     <div class="auth-container">
         <div class="auth-card">
             <div class="auth-header">
                 <h1 id="formTitle">Welcome to V-Zone</h1>
                 <p id="formSubtitle">Sign in to your account</p>
-                
-                <div class="form-toggle">
-                    <button type="button" class="btn btn-sm toggle-btn active" id="loginToggle">Login</button>
-                    <button type="button" class="btn btn-sm toggle-btn" id="registerToggle">Register</button>
+            </div>
+
+            <!-- Form Toggle Buttons -->
+            <div class="d-flex justify-content-center mb-6">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary btn-sm active" id="loginToggle">Login</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm" id="registerToggle">Register</button>
                 </div>
             </div>
 
-            <div class="form-container show-login">
+            <!-- Login Form -->
+            <form class="auth-form" id="loginForm">
                 <div class="alert alert-success" id="successMessage" style="display: none;"></div>
                 <div class="alert alert-danger" id="errorAlert" style="display: none;"></div>
 
-                <!-- Login Form -->
-                <form class="auth-form login-form" id="loginForm">
-                    <div class="form-group">
-                        <label for="loginEmail" class="form-label">Email Address</label>
-                        <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
-                        <div class="invalid-feedback" id="loginEmailError"></div>
-                    </div>
+                <div class="form-group">
+                    <label for="loginEmail" class="form-label">Email Address</label>
+                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
+                    <div class="invalid-feedback" id="loginEmailError"></div>
+                </div>
 
                 <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <div class="input-wrapper">
-                        <input type="password" id="loginPassword" class="form-input" placeholder="Enter your password" required>
-                        <svg class="input-icon password-toggle" id="loginPasswordToggle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="error-message" id="loginPasswordError"></div>
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                    <div class="invalid-feedback" id="loginPasswordError"></div>
                 </div>
 
-                <div class="checkbox-group">
-                    <input type="checkbox" id="rememberMe" class="checkbox">
-                    <label for="rememberMe" class="checkbox-label">Remember me</label>
+                <div class="form-check mb-4">
+                    <input type="checkbox" id="rememberMe" class="form-check-input">
+                    <label for="rememberMe" class="form-check-label">Remember me</label>
                 </div>
 
-                <button type="submit" class="submit-btn" id="loginBtn">Sign In</button>
-
-                <div class="forgot-password">
-                    <a href="#" id="forgotPasswordLink">Forgot your password?</a>
-                </div>
+                <button type="submit" class="btn btn-primary btn-full">Sign In</button>
             </form>
 
             <!-- Registration Form -->
-            <form class="form-content registration-form" id="registrationForm">
+            <form class="auth-form" id="registerForm" style="display: none;">
+                <div class="alert alert-success" id="regSuccessMessage" style="display: none;"></div>
+                <div class="alert alert-danger" id="regErrorAlert" style="display: none;"></div>
+
                 <div class="form-group">
-                    <label for="registerName">Full Name</label>
-                    <div class="input-wrapper">
-                        <input type="text" id="registerName" class="form-input" placeholder="Enter your full name" required>
-                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="error-message" id="registerNameError"></div>
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" id="firstName" class="form-control" placeholder="Enter your first name" required>
+                    <div class="invalid-feedback" id="firstNameError"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="registerEmail">Email Address</label>
-                    <div class="input-wrapper">
-                        <input type="email" id="registerEmail" class="form-input" placeholder="Enter your email" required>
-                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="error-message" id="registerEmailError"></div>
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" id="lastName" class="form-control" placeholder="Enter your last name" required>
+                    <div class="invalid-feedback" id="lastNameError"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="registerPassword">Password</label>
-                    <div class="input-wrapper">
-                        <input type="password" id="registerPassword" class="form-input" placeholder="Create a password" required>
-                        <svg class="input-icon password-toggle" id="registerPasswordToggle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="password-strength" id="passwordStrength">
+                    <label for="regEmail" class="form-label">Email Address</label>
+                    <input type="email" id="regEmail" class="form-control" placeholder="Enter your email" required>
+                    <div class="invalid-feedback" id="regEmailError"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="regPassword" class="form-label">Password</label>
+                    <input type="password" id="regPassword" class="form-control" placeholder="Create a password" required>
+                    <div class="password-strength">
                         <div class="strength-bar">
                             <div class="strength-fill" id="strengthFill"></div>
                         </div>
                         <div class="strength-text" id="strengthText">Password strength</div>
                     </div>
-                    <div class="error-message" id="registerPasswordError"></div>
+                    <div class="invalid-feedback" id="regPasswordError"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <div class="input-wrapper">
-                        <input type="password" id="confirmPassword" class="form-input" placeholder="Confirm your password" required>
-                        <svg class="input-icon password-toggle" id="confirmPasswordToggle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="error-message" id="confirmPasswordError"></div>
+                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
+                    <div class="invalid-feedback" id="confirmPasswordError"></div>
                 </div>
 
-                <div class="checkbox-group">
-                    <input type="checkbox" id="agreeTerms" class="checkbox" required>
-                    <label for="agreeTerms" class="checkbox-label">I agree to the <a href="#" style="color: var(--secondary-color);">Terms & Conditions</a></label>
+                <div class="form-check mb-4">
+                    <input type="checkbox" id="agreeTerms" class="form-check-input" required>
+                    <label for="agreeTerms" class="form-check-label">I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a></label>
                 </div>
 
-                <button type="submit" class="submit-btn" id="registerBtn">Create Account</button>
+                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
             </form>
 
             <!-- Forgot Password Form -->
-            <form class="form-content forgot-password-form" id="forgotPasswordForm">
-                <button type="button" class="back-button" id="backToLogin">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <polyline points="15,18 9,12 15,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    Back to Login
-                </button>
+            <form class="auth-form" id="forgotPasswordForm" style="display: none;">
+                <div class="alert alert-success" id="forgotSuccessMessage" style="display: none;"></div>
+                <div class="alert alert-danger" id="forgotErrorAlert" style="display: none;"></div>
 
-                <div class="email-sent-icon" id="emailSentIcon" style="display: none;">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <polyline points="8,10 12,14 16,10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                <div class="form-group">
+                    <label for="forgotEmail" class="form-label">Email Address</label>
+                    <input type="email" id="forgotEmail" class="form-control" placeholder="Enter your email" required>
+                    <div class="invalid-feedback" id="forgotEmailError"></div>
                 </div>
 
-                <div id="forgotPasswordStep1">
-                    <div class="form-group">
-                        <label for="forgotEmail">Email Address</label>
-                        <div class="input-wrapper">
-                            <input type="email" id="forgotEmail" class="form-input" placeholder="Enter your email address" required>
-                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </div>
-                        <div class="error-message" id="forgotEmailError"></div>
-                    </div>
-
-                    <button type="submit" class="submit-btn" id="sendResetBtn">Send Reset Link</button>
-                </div>
-
-                <div id="forgotPasswordStep2" style="display: none;">
-                    <div class="email-sent-text">
-                        <p><strong>Check your email!</strong></p>
-                        <p>We've sent a password reset link to your email address. Please check your inbox and follow the instructions to reset your password.</p>
-                        <p style="margin-top: 15px; font-size: 0.85rem;">Didn't receive the email? Check your spam folder or <a href="#" id="resendEmailLink" class="resend-link">resend the email</a></p>
-                    </div>
-                </div>
+                <button type="submit" class="btn btn-primary btn-full">Send Reset Link</button>
+                <button type="button" class="btn btn-outline-primary btn-full mt-3" id="backToLogin">Back to Login</button>
             </form>
 
-            <!-- Reset Password Form (for when user clicks reset link) -->
-            <form class="form-content reset-password-form" id="resetPasswordForm">
-                <button type="button" class="back-button" id="backToLoginFromReset">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <polyline points="15,18 9,12 15,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    Back to Login
-                </button>
+            <!-- OTP Verification Form -->
+            <form class="auth-form" id="otpForm" style="display: none;">
+                <div class="alert alert-success" id="otpSuccessMessage" style="display: none;"></div>
+                <div class="alert alert-danger" id="otpErrorAlert" style="display: none;"></div>
 
-                <div class="form-group">
-                    <label for="resetCode">Verification Code</label>
-                    <div class="otp-container">
-                        <input type="text" class="otp-input" maxlength="1" id="otp1">
-                        <input type="text" class="otp-input" maxlength="1" id="otp2">
-                        <input type="text" class="otp-input" maxlength="1" id="otp3">
-                        <input type="text" class="otp-input" maxlength="1" id="otp4">
-                        <input type="text" class="otp-input" maxlength="1" id="otp5">
-                        <input type="text" class="otp-input" maxlength="1" id="otp6">
-                    </div>
-                    <div class="resend-code">
-                        <span id="resendTimer">Resend code in 60s</span> | 
-                        <a href="#" id="resendCodeLink" class="resend-link" style="display: none;">Resend Code</a>
-                    </div>
-                    <div class="error-message" id="resetCodeError"></div>
+                <p class="text-center text-muted mb-4">We've sent a verification code to your email</p>
+
+                <div class="otp-container">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
+                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
                 </div>
 
+                <button type="submit" class="btn btn-primary btn-full">Verify Code</button>
+                <button type="button" class="btn btn-outline-primary btn-full mt-3" id="resendOtp">Resend Code</button>
+            </form>
+
+            <!-- Reset Password Form -->
+            <form class="auth-form" id="resetPasswordForm" style="display: none;">
+                <div class="alert alert-success" id="resetSuccessMessage" style="display: none;"></div>
+                <div class="alert alert-danger" id="resetErrorAlert" style="display: none;"></div>
+
                 <div class="form-group">
-                    <label for="newPassword">New Password</label>
-                    <div class="input-wrapper">
-                        <input type="password" id="newPassword" class="form-input" placeholder="Enter new password" required>
-                        <svg class="input-icon password-toggle" id="newPasswordToggle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="password-strength" id="newPasswordStrength">
+                    <label for="newPassword" class="form-label">New Password</label>
+                    <input type="password" id="newPassword" class="form-control" placeholder="Enter new password" required>
+                    <div class="password-strength">
                         <div class="strength-bar">
-                            <div class="strength-fill" id="newStrengthFill"></div>
+                            <div class="strength-fill" id="newPasswordStrengthFill"></div>
                         </div>
-                        <div class="strength-text" id="newStrengthText">Password strength</div>
+                        <div class="strength-text" id="newPasswordStrengthText">Password strength</div>
                     </div>
-                    <div class="error-message" id="newPasswordError"></div>
+                    <div class="invalid-feedback" id="newPasswordError"></div>
                 </div>
 
                 <div class="form-group">
-                    <label for="confirmNewPassword">Confirm New Password</label>
-                    <div class="input-wrapper">
-                        <input type="password" id="confirmNewPassword" class="form-input" placeholder="Confirm new password" required>
-                        <svg class="input-icon password-toggle" id="confirmNewPasswordToggle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="error-message" id="confirmNewPasswordError"></div>
+                    <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
+                    <input type="password" id="confirmNewPassword" class="form-control" placeholder="Confirm new password" required>
+                    <div class="invalid-feedback" id="confirmNewPasswordError"></div>
                 </div>
 
-                <button type="submit" class="submit-btn" id="resetPasswordBtn">Reset Password</button>
+                <button type="submit" class="btn btn-primary btn-full">Reset Password</button>
             </form>
+
+            <div class="auth-footer">
+                <p id="authFooterText">Don't have an account? <a href="#" id="switchToRegister">Sign up here</a></p>
+                <p><a href="#" id="forgotPasswordLink">Forgot your password?</a></p>
+            </div>
         </div>
     </div>
 
+    <style>
+        /* Custom styles for form toggle and special auth components */
+        .btn-group {
+            display: flex;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: var(--bg-light);
+            padding: 4px;
+        }
+
+        .btn-group .btn {
+            margin: 0;
+            border-radius: var(--border-radius-sm);
+            border: none;
+            flex: 1;
+        }
+
+        .btn-group .btn.active {
+            background: var(--primary-color);
+            color: var(--text-light);
+        }
+
+        .btn-group .btn:not(.active) {
+            background: transparent;
+            color: var(--text-dark);
+        }
+
+        .btn-group .btn:not(.active):hover {
+            background: rgba(54, 25, 104, 0.1);
+        }
+
+        /* OTP specific styles are already in global.css */
+    </style>
+
     <script>
-        // DOM Elements
+        // Form switching logic
         const loginToggle = document.getElementById('loginToggle');
         const registerToggle = document.getElementById('registerToggle');
-        const formContainer = document.querySelector('.form-container');
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const forgotPasswordForm = document.getElementById('forgotPasswordForm');
+        const otpForm = document.getElementById('otpForm');
+        const resetPasswordForm = document.getElementById('resetPasswordForm');
         const formTitle = document.getElementById('formTitle');
         const formSubtitle = document.getElementById('formSubtitle');
-        const loginForm = document.getElementById('loginForm');
-        const registrationForm = document.getElementById('registrationForm');
-        const forgotPasswordForm = document.getElementById('forgotPasswordForm');
-        const resetPasswordForm = document.getElementById('resetPasswordForm');
-        const successMessage = document.getElementById('successMessage');
-        const errorAlert = document.getElementById('errorAlert');
+        const authFooterText = document.getElementById('authFooterText');
 
-        // Password toggle elements
-        const passwordToggles = document.querySelectorAll('.password-toggle');
-        
-        // Form validation
-        let isFormValid = {
-            login: false,
-            register: false,
-            forgot: false,
-            reset: false
-        };
-
-        // Current form state
-        let currentForm = 'login';
-
-        // Resend timer
-        let resendTimer = null;
-        let resendCountdown = 60;
-
-        // Toggle between login and registration
+        // Toggle between login and register
         loginToggle.addEventListener('click', () => {
-            switchToLogin();
+            loginToggle.classList.add('active');
+            registerToggle.classList.remove('active');
+            showForm('login');
         });
 
         registerToggle.addEventListener('click', () => {
-            switchToRegister();
-        });
-
-        function switchToLogin() {
-            loginToggle.classList.add('active');
-            registerToggle.classList.remove('active');
-            formContainer.className = 'form-container show-login';
-            formTitle.textContent = 'Welcome Back';
-            formSubtitle.textContent = 'Sign in to your account';
-            currentForm = 'login';
-            hideMessages();
-        }
-
-        function switchToRegister() {
             registerToggle.classList.add('active');
             loginToggle.classList.remove('active');
-            formContainer.className = 'form-container show-register';
-            formTitle.textContent = 'Create Account';
-            formSubtitle.textContent = 'Join V-Zone today';
-            currentForm = 'register';
-            hideMessages();
-        }
-
-        function switchToForgotPassword() {
-            loginToggle.classList.remove('active');
-            registerToggle.classList.remove('active');
-            formContainer.className = 'form-container show-forgot';
-            formTitle.textContent = 'Reset Password';
-            formSubtitle.textContent = 'Enter your email to receive reset instructions';
-            currentForm = 'forgot';
-            hideMessages();
-            
-            // Reset forgot password form
-            document.getElementById('forgotPasswordStep1').style.display = 'block';
-            document.getElementById('forgotPasswordStep2').style.display = 'none';
-            document.getElementById('emailSentIcon').style.display = 'none';
-        }
-
-        function switchToResetPassword() {
-            loginToggle.classList.remove('active');
-            registerToggle.classList.remove('active');
-            formContainer.className = 'form-container show-reset';
-            formTitle.textContent = 'Create New Password';
-            formSubtitle.textContent = 'Enter the code sent to your email';
-            currentForm = 'reset';
-            hideMessages();
-            startResendTimer();
-        }
-
-        // Password visibility toggle
-        passwordToggles.forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const input = toggle.closest('.input-wrapper').querySelector('input');
-                const isPassword = input.type === 'password';
-                
-                input.type = isPassword ? 'text' : 'password';
-                
-                // Update icon
-                if (isPassword) {
-                    toggle.innerHTML = `
-                        <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94L17.94 17.94z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19l-6.84-6.84z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    `;
-                } else {
-                    toggle.innerHTML = `
-                        <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    `;
-                }
-            });
+            showForm('register');
         });
+
+        // Forgot password link
+        document.getElementById('forgotPasswordLink').addEventListener('click', (e) => {
+            e.preventDefault();
+            showForm('forgot');
+        });
+
+        // Back to login from forgot password
+        document.getElementById('backToLogin').addEventListener('click', () => {
+            showForm('login');
+        });
+
+        // Switch to register from footer
+        document.getElementById('switchToRegister').addEventListener('click', (e) => {
+            e.preventDefault();
+            registerToggle.click();
+        });
+
+        function showForm(type) {
+            // Hide all forms
+            const forms = [loginForm, registerForm, forgotPasswordForm, otpForm, resetPasswordForm];
+            forms.forEach(form => form.style.display = 'none');
+
+            // Hide toggle buttons for certain forms
+            const toggleContainer = document.querySelector('.btn-group').parentElement;
+
+            switch(type) {
+                case 'login':
+                    loginForm.style.display = 'block';
+                    toggleContainer.style.display = 'flex';
+                    formTitle.textContent = 'Welcome to V-Zone';
+                    formSubtitle.textContent = 'Sign in to your account';
+                    authFooterText.innerHTML = `Don't have an account? <a href="#" id="switchToRegister">Sign up here</a>`;
+                    break;
+                case 'register':
+                    registerForm.style.display = 'block';
+                    toggleContainer.style.display = 'flex';
+                    formTitle.textContent = 'Join V-Zone';
+                    formSubtitle.textContent = 'Create your account';
+                    authFooterText.innerHTML = `Already have an account? <a href="#" id="switchToLogin">Sign in here</a>`;
+                    break;
+                case 'forgot':
+                    forgotPasswordForm.style.display = 'block';
+                    toggleContainer.style.display = 'none';
+                    formTitle.textContent = 'Reset Password';
+                    formSubtitle.textContent = 'Enter your email to receive reset instructions';
+                    authFooterText.innerHTML = '';
+                    break;
+                case 'otp':
+                    otpForm.style.display = 'block';
+                    toggleContainer.style.display = 'none';
+                    formTitle.textContent = 'Verify Email';
+                    formSubtitle.textContent = 'Enter the verification code sent to your email';
+                    authFooterText.innerHTML = '';
+                    break;
+                case 'reset':
+                    resetPasswordForm.style.display = 'block';
+                    toggleContainer.style.display = 'none';
+                    formTitle.textContent = 'New Password';
+                    formSubtitle.textContent = 'Create a strong new password';
+                    authFooterText.innerHTML = '';
+                    break;
+            }
+
+            // Re-bind switch to login link if it exists
+            const switchToLogin = document.getElementById('switchToLogin');
+            if (switchToLogin) {
+                switchToLogin.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    loginToggle.click();
+                });
+            }
+
+            // Re-bind switch to register link if it exists
+            const switchToRegister = document.getElementById('switchToRegister');
+            if (switchToRegister) {
+                switchToRegister.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    registerToggle.click();
+                });
+            }
+        }
 
         // Password strength checker
-        const registerPassword = document.getElementById('registerPassword');
-        const passwordStrength = document.getElementById('passwordStrength');
-        const strengthFill = document.getElementById('strengthFill');
-        const strengthText = document.getElementById('strengthText');
+        function checkPasswordStrength(password, fillElement, textElement) {
+            const strength = {
+                0: { text: 'Very Weak', class: 'weak', width: '20%' },
+                1: { text: 'Weak', class: 'weak', width: '40%' },
+                2: { text: 'Fair', class: 'medium', width: '60%' },
+                3: { text: 'Good', class: 'medium', width: '80%' },
+                4: { text: 'Strong', class: 'strong', width: '100%' }
+            };
 
-        registerPassword.addEventListener('input', () => {
-            const password = registerPassword.value;
-            const strength = checkPasswordStrength(password);
-            
-            if (password.length > 0) {
-                passwordStrength.style.display = 'block';
-                updatePasswordStrength(strength);
-            } else {
-                passwordStrength.style.display = 'none';
-            }
-        });
-
-        // Password strength checker for new password
-        const newPassword = document.getElementById('newPassword');
-        const newPasswordStrength = document.getElementById('newPasswordStrength');
-        const newStrengthFill = document.getElementById('newStrengthFill');
-        const newStrengthText = document.getElementById('newStrengthText');
-
-        newPassword.addEventListener('input', () => {
-            const password = newPassword.value;
-            const strength = checkPasswordStrength(password);
-            
-            if (password.length > 0) {
-                newPasswordStrength.style.display = 'block';
-                updateNewPasswordStrength(strength);
-            } else {
-                newPasswordStrength.style.display = 'none';
-            }
-        });
-
-        function checkPasswordStrength(password) {
             let score = 0;
-            
-            // Length check
             if (password.length >= 8) score++;
-            if (password.length >= 12) score++;
-            
-            // Character variety checks
             if (/[a-z]/.test(password)) score++;
             if (/[A-Z]/.test(password)) score++;
             if (/[0-9]/.test(password)) score++;
             if (/[^A-Za-z0-9]/.test(password)) score++;
+
+            const result = strength[Math.min(score, 4)];
             
-            if (score < 3) return 'weak';
-            if (score < 5) return 'medium';
-            return 'strong';
+            fillElement.style.width = result.width;
+            fillElement.className = `strength-fill ${result.class}`;
+            textElement.textContent = result.text;
+            textElement.className = `strength-text text-${result.class === 'weak' ? 'danger' : result.class === 'medium' ? 'warning' : 'success'}`;
         }
 
-        function updatePasswordStrength(strength) {
-            strengthFill.className = `strength-fill ${strength}`;
-            strengthText.className = `strength-text ${strength}`;
-            
-            switch (strength) {
-                case 'weak':
-                    strengthText.textContent = 'Weak password';
-                    break;
-                case 'medium':
-                    strengthText.textContent = 'Medium strength';
-                    break;
-                case 'strong':
-                    strengthText.textContent = 'Strong password';
-                    break;
-            }
-        }
+        // Password strength for registration
+        document.getElementById('regPassword').addEventListener('input', (e) => {
+            const fillElement = document.getElementById('strengthFill');
+            const textElement = document.getElementById('strengthText');
+            checkPasswordStrength(e.target.value, fillElement, textElement);
+        });
 
-        function updateNewPasswordStrength(strength) {
-            newStrengthFill.className = `strength-fill ${strength}`;
-            newStrengthText.className = `strength-text ${strength}`;
-            
-            switch (strength) {
-                case 'weak':
-                    newStrengthText.textContent = 'Weak password';
-                    break;
-                case 'medium':
-                    newStrengthText.textContent = 'Medium strength';
-                    break;
-                case 'strong':
-                    newStrengthText.textContent = 'Strong password';
-                    break;
-            }
-        }
+        // Password strength for reset password
+        document.getElementById('newPassword').addEventListener('input', (e) => {
+            const fillElement = document.getElementById('newPasswordStrengthFill');
+            const textElement = document.getElementById('newPasswordStrengthText');
+            checkPasswordStrength(e.target.value, fillElement, textElement);
+        });
 
-        // Email validation
-        function validateEmail(email) {
-            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            return re.test(email);
-        }
+        // OTP input handling
+        const otpInputs = document.querySelectorAll('.otp-input');
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                const value = e.target.value.replace(/[^0-9]/g, '');
+                e.target.value = value;
 
-        // Form validation functions
-        function validateLoginForm() {
-            const email = document.getElementById('loginEmail');
-            const password = document.getElementById('loginPassword');
-            let isValid = true;
-
-            // Reset previous errors
-            clearFieldError(email);
-            clearFieldError(password);
-
-            // Email validation
-            if (!email.value.trim()) {
-                showFieldError(email, 'Email is required');
-                isValid = false;
-            } else if (!validateEmail(email.value)) {
-                showFieldError(email, 'Please enter a valid email');
-                isValid = false;
-            } else {
-                showFieldSuccess(email);
-            }
-
-            // Password validation
-            if (!password.value.trim()) {
-                showFieldError(password, 'Password is required');
-                isValid = false;
-            } else if (password.value.length < 6) {
-                showFieldError(password, 'Password must be at least 6 characters');
-                isValid = false;
-            } else {
-                showFieldSuccess(password);
-            }
-
-            return isValid;
-        }
-
-        function validateRegistrationForm() {
-            const name = document.getElementById('registerName');
-            const email = document.getElementById('registerEmail');
-            const password = document.getElementById('registerPassword');
-            const confirmPassword = document.getElementById('confirmPassword');
-            const agreeTerms = document.getElementById('agreeTerms');
-            let isValid = true;
-
-            // Reset previous errors
-            clearFieldError(name);
-            clearFieldError(email);
-            clearFieldError(password);
-            clearFieldError(confirmPassword);
-
-            // Name validation
-            if (!name.value.trim()) {
-                showFieldError(name, 'Full name is required');
-                isValid = false;
-            } else if (name.value.trim().length < 2) {
-                showFieldError(name, 'Name must be at least 2 characters');
-                isValid = false;
-            } else {
-                showFieldSuccess(name);
-            }
-
-            // Email validation
-            if (!email.value.trim()) {
-                showFieldError(email, 'Email is required');
-                isValid = false;
-            } else if (!validateEmail(email.value)) {
-                showFieldError(email, 'Please enter a valid email');
-                isValid = false;
-            } else {
-                showFieldSuccess(email);
-            }
-
-            // Password validation
-            if (!password.value.trim()) {
-                showFieldError(password, 'Password is required');
-                isValid = false;
-            } else if (password.value.length < 8) {
-                showFieldError(password, 'Password must be at least 8 characters');
-                isValid = false;
-            } else if (checkPasswordStrength(password.value) === 'weak') {
-                showFieldError(password, 'Please choose a stronger password');
-                isValid = false;
-            } else {
-                showFieldSuccess(password);
-            }
-
-            // Confirm password validation
-            if (!confirmPassword.value.trim()) {
-                showFieldError(confirmPassword, 'Please confirm your password');
-                isValid = false;
-            } else if (password.value !== confirmPassword.value) {
-                showFieldError(confirmPassword, 'Passwords do not match');
-                isValid = false;
-            } else {
-                showFieldSuccess(confirmPassword);
-            }
-
-            // Terms agreement
-            if (!agreeTerms.checked) {
-                showErrorMessage('Please agree to the Terms & Conditions');
-                isValid = false;
-            }
-
-            return isValid;
-        }
-
-        function validateForgotPasswordForm() {
-            const email = document.getElementById('forgotEmail');
-            let isValid = true;
-
-            // Reset previous errors
-            clearFieldError(email);
-
-            // Email validation
-            if (!email.value.trim()) {
-                showFieldError(email, 'Email is required');
-                isValid = false;
-            } else if (!validateEmail(email.value)) {
-                showFieldError(email, 'Please enter a valid email');
-                isValid = false;
-            } else {
-                showFieldSuccess(email);
-            }
-
-            return isValid;
-        }
-
-        function validateResetPasswordForm() {
-            const otpInputs = document.querySelectorAll('.otp-input');
-            const newPassword = document.getElementById('newPassword');
-            const confirmNewPassword = document.getElementById('confirmNewPassword');
-            let isValid = true;
-
-            // Reset previous errors
-            clearFieldError(newPassword);
-            clearFieldError(confirmNewPassword);
-
-            // OTP validation
-            let otpValue = '';
-            let otpComplete = true;
-            otpInputs.forEach(input => {
-                otpValue += input.value;
-                if (!input.value.trim()) {
-                    otpComplete = false;
+                if (value && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
                 }
             });
 
-            if (!otpComplete) {
-                document.getElementById('resetCodeError').textContent = 'Please enter the complete verification code';
-                document.getElementById('resetCodeError').style.display = 'block';
-                isValid = false;
-            } else if (otpValue.length !== 6) {
-                document.getElementById('resetCodeError').textContent = 'Verification code must be 6 digits';
-                document.getElementById('resetCodeError').style.display = 'block';
-                isValid = false;
-            } else {
-                document.getElementById('resetCodeError').style.display = 'none';
-            }
-
-            // New password validation
-            if (!newPassword.value.trim()) {
-                showFieldError(newPassword, 'New password is required');
-                isValid = false;
-            } else if (newPassword.value.length < 8) {
-                showFieldError(newPassword, 'Password must be at least 8 characters');
-                isValid = false;
-            } else if (checkPasswordStrength(newPassword.value) === 'weak') {
-                showFieldError(newPassword, 'Please choose a stronger password');
-                isValid = false;
-            } else {
-                showFieldSuccess(newPassword);
-            }
-
-            // Confirm password validation
-            if (!confirmNewPassword.value.trim()) {
-                showFieldError(confirmNewPassword, 'Please confirm your new password');
-                isValid = false;
-            } else if (newPassword.value !== confirmNewPassword.value) {
-                showFieldError(confirmNewPassword, 'Passwords do not match');
-                isValid = false;
-            } else {
-                showFieldSuccess(confirmNewPassword);
-            }
-
-            return isValid;
-        }
-
-        function showFieldError(field, message) {
-            const formGroup = field.closest('.form-group');
-            const errorElement = formGroup.querySelector('.error-message');
-            
-            formGroup.classList.add('error');
-            formGroup.classList.remove('success');
-            field.classList.add('error');
-            field.classList.remove('success');
-            errorElement.textContent = message;
-        }
-
-        function showFieldSuccess(field) {
-            const formGroup = field.closest('.form-group');
-            
-            formGroup.classList.remove('error');
-            formGroup.classList.add('success');
-            field.classList.remove('error');
-            field.classList.add('success');
-        }
-
-        function clearFieldError(field) {
-            const formGroup = field.closest('.form-group');
-            const errorElement = formGroup.querySelector('.error-message');
-            
-            formGroup.classList.remove('error', 'success');
-            field.classList.remove('error', 'success');
-            errorElement.textContent = '';
-        }
-
-        // Message functions
-        function showSuccessMessage(message) {
-            successMessage.textContent = message;
-            successMessage.style.display = 'block';
-            errorAlert.style.display = 'none';
-        }
-
-        function showErrorMessage(message) {
-            errorAlert.textContent = message;
-            errorAlert.style.display = 'block';
-            successMessage.style.display = 'none';
-        }
-
-        function hideMessages() {
-            successMessage.style.display = 'none';
-            errorAlert.style.display = 'none';
-        }
-
-        // OTP Input functionality
-        function setupOTPInputs() {
-            const otpInputs = document.querySelectorAll('.otp-input');
-            
-            otpInputs.forEach((input, index) => {
-                input.addEventListener('input', (e) => {
-                    const value = e.target.value;
-                    
-                    // Only allow numbers
-                    if (!/^\d*$/.test(value)) {
-                        e.target.value = '';
-                        return;
-                    }
-                    
-                    // Move to next input
-                    if (value && index < otpInputs.length - 1) {
-                        otpInputs[index + 1].focus();
-                    }
-                    
-                    // Update visual state
-                    if (value) {
-                        input.classList.add('filled');
-                    } else {
-                        input.classList.remove('filled');
-                    }
-                });
-                
-                input.addEventListener('keydown', (e) => {
-                    // Move to previous input on backspace
-                    if (e.key === 'Backspace' && !input.value && index > 0) {
-                        otpInputs[index - 1].focus();
-                    }
-                });
-                
-                input.addEventListener('paste', (e) => {
-                    e.preventDefault();
-                    const paste = (e.clipboardData || window.clipboardData).getData('text');
-                    const pasteArray = paste.match(/\d/g);
-                    
-                    if (pasteArray) {
-                        pasteArray.slice(0, otpInputs.length).forEach((char, i) => {
-                            if (otpInputs[i]) {
-                                otpInputs[i].value = char;
-                                otpInputs[i].classList.add('filled');
-                            }
-                        });
-                        
-                        // Focus last filled input
-                        const lastIndex = Math.min(pasteArray.length - 1, otpInputs.length - 1);
-                        otpInputs[lastIndex].focus();
-                    }
-                });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && !e.target.value && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
             });
-        }
+        });
 
-        // Resend timer functionality
-        function startResendTimer() {
-            resendCountdown = 60;
-            const resendTimerElement = document.getElementById('resendTimer');
-            const resendLinkElement = document.getElementById('resendCodeLink');
-            
-            resendTimerElement.style.display = 'inline';
-            resendLinkElement.style.display = 'none';
-            
-            resendTimer = setInterval(() => {
-                resendCountdown--;
-                resendTimerElement.textContent = `Resend code in ${resendCountdown}s`;
-                
-                if (resendCountdown <= 0) {
-                    clearInterval(resendTimer);
-                    resendTimerElement.style.display = 'none';
-                    resendLinkElement.style.display = 'inline';
-                }
-            }, 1000);
-        }
-
-        // Form submissions
-        loginForm.addEventListener('submit', async (e) => {
+        // Form submissions (basic validation - replace with actual authentication logic)
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            if (validateLoginForm()) {
-                const loginBtn = document.getElementById('loginBtn');
-                loginBtn.classList.add('loading');
-                loginBtn.disabled = true;
-
-                try {
-                    // Simulate API call
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    
-                    // For demo purposes, show success and redirect
-                    showSuccessMessage('Login successful! Redirecting...');
-                    
-                    setTimeout(() => {
-                        // Redirect to dashboard
-                        window.location.href = 'dashboard1/index.html';
-                    }, 1500);
-                    
-                } catch (error) {
-                    showErrorMessage('Login failed. Please check your credentials.');
-                } finally {
-                    loginBtn.classList.remove('loading');
-                    loginBtn.disabled = false;
-                }
-            }
+            // Add your login logic here
+            console.log('Login form submitted');
         });
 
-        registrationForm.addEventListener('submit', async (e) => {
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            if (validateRegistrationForm()) {
-                const registerBtn = document.getElementById('registerBtn');
-                registerBtn.classList.add('loading');
-                registerBtn.disabled = true;
-
-                try {
-                    // Simulate API call
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    
-                    showSuccessMessage('Account created successfully! Please check your email for verification.');
-                    
-                    // Clear form
-                    registrationForm.reset();
-                    document.getElementById('passwordStrength').style.display = 'none';
-                    
-                    // Switch to login after 3 seconds
-                    setTimeout(() => {
-                        switchToLogin();
-                    }, 3000);
-                    
-                } catch (error) {
-                    showErrorMessage('Registration failed. Please try again.');
-                } finally {
-                    registerBtn.classList.remove('loading');
-                    registerBtn.disabled = false;
-                }
-            }
+            // Add your registration logic here
+            console.log('Registration form submitted');
+            // Simulate moving to OTP verification
+            // showForm('otp');
         });
 
-        // Forgot password functionality
-        document.getElementById('forgotPasswordLink').addEventListener('click', (e) => {
+        document.getElementById('forgotPasswordForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            switchToForgotPassword();
+            // Add your forgot password logic here
+            console.log('Forgot password form submitted');
+            // Simulate moving to OTP verification
+            // showForm('otp');
         });
 
-        // Back button functionality
-        document.getElementById('backToLogin').addEventListener('click', () => {
-            switchToLogin();
-        });
-
-        document.getElementById('backToLoginFromReset').addEventListener('click', () => {
-            switchToLogin();
-        });
-
-        // Initialize OTP inputs
-        setupOTPInputs();
-
-        // Forgot password form submission
-        forgotPasswordForm.addEventListener('submit', async (e) => {
+        document.getElementById('otpForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            if (validateForgotPasswordForm()) {
-                const sendResetBtn = document.getElementById('sendResetBtn');
-                sendResetBtn.classList.add('loading');
-                sendResetBtn.disabled = true;
-
-                try {
-                    // Simulate API call
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    
-                    // Show step 2 (email sent confirmation)
-                    document.getElementById('forgotPasswordStep1').style.display = 'none';
-                    document.getElementById('forgotPasswordStep2').style.display = 'block';
-                    document.getElementById('emailSentIcon').style.display = 'block';
-                    
-                    formTitle.textContent = 'Check Your Email';
-                    formSubtitle.textContent = 'Password reset instructions sent';
-                    
-                } catch (error) {
-                    showErrorMessage('Failed to send reset email. Please try again.');
-                } finally {
-                    sendResetBtn.classList.remove('loading');
-                    sendResetBtn.disabled = false;
-                }
-            }
+            // Add your OTP verification logic here
+            console.log('OTP form submitted');
+            // Simulate moving to reset password
+            // showForm('reset');
         });
 
-        // Resend email functionality
-        document.getElementById('resendEmailLink').addEventListener('click', async (e) => {
+        document.getElementById('resetPasswordForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            
-            const link = e.target;
-            const originalText = link.textContent;
-            link.textContent = 'Sending...';
-            link.style.pointerEvents = 'none';
-            
-            try {
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                showSuccessMessage('Reset email sent again!');
-            } catch (error) {
-                showErrorMessage('Failed to resend email. Please try again.');
-            } finally {
-                link.textContent = originalText;
-                link.style.pointerEvents = 'auto';
-            }
+            // Add your reset password logic here
+            console.log('Reset password form submitted');
+            // Simulate success and return to login
+            // showForm('login');
         });
 
-        // Reset password form submission
-        resetPasswordForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            if (validateResetPasswordForm()) {
-                const resetPasswordBtn = document.getElementById('resetPasswordBtn');
-                resetPasswordBtn.classList.add('loading');
-                resetPasswordBtn.disabled = true;
-
-                try {
-                    // Simulate API call
-                    await new Promise(resolve => setTimeout(resolve, 2000));
-                    
-                    showSuccessMessage('Password reset successfully! You can now login with your new password.');
-                    
-                    // Clear form and switch to login after delay
-                    setTimeout(() => {
-                        resetPasswordForm.reset();
-                        document.querySelectorAll('.otp-input').forEach(input => {
-                            input.classList.remove('filled');
-                        });
-                        document.getElementById('newPasswordStrength').style.display = 'none';
-                        switchToLogin();
-                    }, 3000);
-                    
-                } catch (error) {
-                    showErrorMessage('Password reset failed. Please try again.');
-                } finally {
-                    resetPasswordBtn.classList.remove('loading');
-                    resetPasswordBtn.disabled = false;
-                }
-            }
-        });
-
-        // Resend code functionality
-        document.getElementById('resendCodeLink').addEventListener('click', async (e) => {
-            e.preventDefault();
-            
-            try {
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 1000));
-                showSuccessMessage('New verification code sent!');
-                startResendTimer();
-            } catch (error) {
-                showErrorMessage('Failed to resend code. Please try again.');
-            }
-        });
-
-        // Real-time validation on input
-        document.getElementById('loginEmail').addEventListener('blur', () => {
-            const email = document.getElementById('loginEmail');
-            if (email.value.trim()) {
-                if (validateEmail(email.value)) {
-                    showFieldSuccess(email);
-                } else {
-                    showFieldError(email, 'Please enter a valid email');
-                }
-            }
-        });
-
-        document.getElementById('registerEmail').addEventListener('blur', () => {
-            const email = document.getElementById('registerEmail');
-            if (email.value.trim()) {
-                if (validateEmail(email.value)) {
-                    showFieldSuccess(email);
-                } else {
-                    showFieldError(email, 'Please enter a valid email');
-                }
-            }
-        });
-
-        document.getElementById('confirmPassword').addEventListener('input', () => {
-            const password = document.getElementById('registerPassword');
-            const confirmPassword = document.getElementById('confirmPassword');
-            
-            if (confirmPassword.value.trim()) {
-                if (password.value === confirmPassword.value) {
-                    showFieldSuccess(confirmPassword);
-                } else {
-                    showFieldError(confirmPassword, 'Passwords do not match');
-                }
-            }
-        });
-
-        // Real-time validation for forgot password form
-        document.getElementById('forgotEmail').addEventListener('blur', () => {
-            const email = document.getElementById('forgotEmail');
-            if (email.value.trim()) {
-                if (validateEmail(email.value)) {
-                    showFieldSuccess(email);
-                } else {
-                    showFieldError(email, 'Please enter a valid email');
-                }
-            }
-        });
-
-        // Real-time validation for reset password form
-        document.getElementById('confirmNewPassword').addEventListener('input', () => {
-            const newPassword = document.getElementById('newPassword');
-            const confirmNewPassword = document.getElementById('confirmNewPassword');
-            
-            if (confirmNewPassword.value.trim()) {
-                if (newPassword.value === confirmNewPassword.value) {
-                    showFieldSuccess(confirmNewPassword);
-                } else {
-                    showFieldError(confirmNewPassword, 'Passwords do not match');
-                }
-            }
-        });
-
-        // Check URL parameters for reset token (if coming from email link)
-        window.addEventListener('load', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const resetToken = urlParams.get('reset');
-            
-            if (resetToken) {
-                // If there's a reset token, go directly to reset password form
-                switchToResetPassword();
-            }
-        });
+        // Initialize the form
+        showForm('login');
     </script>
 </body>
 </html>

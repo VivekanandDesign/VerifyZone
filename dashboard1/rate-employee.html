@@ -7,23 +7,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/dashboard-navbar.css">
-    <link rel="stylesheet" href="css/dashboard.css">
-    <link rel="stylesheet" href="css/forms.css">
-    <style>
-        /* Rating Form specific styles */
-        .rating-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .rating-form {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(54, 25, 104, 0.1);
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+<body class="dashboard-page">
         }
 
         .rating-header {
@@ -1453,5 +1439,108 @@
             }
         });
     </script>
+
+    <style>
+        /* Rating Form specific styles */
+        .rating-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-5);
+        }
+
+        .rating-form {
+            background: var(--bg-white);
+            padding: var(--space-8);
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--shadow);
+            margin-bottom: var(--space-6);
+        }
+
+        .form-section {
+            margin-bottom: var(--space-8);
+            padding: var(--space-6);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            background: var(--bg-light);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: var(--font-size-xl);
+            font-weight: 600;
+            margin-bottom: var(--space-4);
+            padding-bottom: var(--space-2);
+            border-bottom: 2px solid var(--secondary-color);
+        }
+
+        .rating-scale {
+            display: flex;
+            gap: var(--space-2);
+            margin: var(--space-4) 0;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .rating-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-1);
+        }
+
+        .rating-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin: 0;
+        }
+
+        .rating-option label {
+            font-size: var(--font-size-sm);
+            text-align: center;
+            color: var(--text-muted);
+            min-width: 60px;
+        }
+
+        .overall-rating {
+            text-align: center;
+            padding: var(--space-6);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-light);
+            border-radius: var(--border-radius-lg);
+            margin: var(--space-6) 0;
+        }
+
+        .overall-rating h3 {
+            color: var(--text-light);
+            margin-bottom: var(--space-4);
+        }
+
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-2);
+            font-size: var(--font-size-4xl);
+            margin: var(--space-4) 0;
+        }
+
+        .star {
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.3);
+            transition: color var(--transition-base);
+        }
+
+        .star:hover,
+        .star.active {
+            color: #ffd700;
+        }
+
+        .submit-section {
+            text-align: center;
+            padding: var(--space-6);
+            background: var(--bg-light);
+            border-radius: var(--border-radius);
+            margin-top: var(--space-6);
+        }
+    </style>
 </body>
 </html>

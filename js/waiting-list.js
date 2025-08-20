@@ -3,11 +3,11 @@ function openWaitingList(product) {
     // Direct navigation to dashboards based on product
     if (product === 'V-Zone') {
         // Navigate to V-Zone Dashboard
-        window.location.href = 'dashboard1/index.html';
+        window.location.href = 'VZoneDashboard/index.html';
         return;
     } else if (product === 'X-Zone') {
         // Navigate to X-Zone Dashboard
-        window.location.href = 'dashboard2/index.html';
+        window.location.href = 'XZoneDashboard/index.html';
         return;
     }
     
@@ -248,7 +248,14 @@ function showWaitingListSuccess(data) {
                     <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
                 </svg>
             </div>
-            <h3>🎉 Welcome to the Waiting List!</h3>
+            <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline; margin-right: 8px;">
+                    <path d="M20 7L12 3L4 7L12 11L20 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M4 12L12 16L20 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M4 17L12 21L20 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Welcome to the Waiting List!
+            </h3>
             <p>Thank you for joining the ${interests} waiting list! You'll be among the first to know when we launch.</p>
             
             <div class="success-details">
@@ -268,7 +275,7 @@ function showWaitingListSuccess(data) {
     // Auto-close after 5 seconds
     setTimeout(() => {
         closeWaitingListModal();
-        showToastMessage(`🎉 Successfully joined ${interests} waiting list!`);
+        showToastMessage(`Successfully joined ${interests} waiting list!`);
     }, 5000);
 }
 

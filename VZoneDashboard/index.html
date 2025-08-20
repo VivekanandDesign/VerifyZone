@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Zone - VerifyZone</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/global.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="../js/dashboard-navbar-independent.js"></script>
+</head>
+<body class="dashboard-page">
+    <div class="dashboard-container">
+        <!-- Sidebar Toggle Button -->
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M3 12L21 12M3 6L21 6M3 18L21 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-content">
+                    <h1>V-Zone</h1>
+                    <div class="header-actions">
+                        <button class="btn btn-outline">Export Data</button>
+                        <button class="btn btn-primary">Refresh</button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Dashboard Section -->
+                <section id="dashboard" class="section active">
+                    <!-- KPI Cards -->
+                    <div class="kpi-grid">
+                        <div class="kpi-card">
+                            <div class="kpi-header">
+                                <div class="kpi-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="12" y1="1" x2="12" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="kpi-title">Total Revenue</h3>
+                            </div>
+                            <div class="kpi-content">
+                                <p class="kpi-value">$124,500</p>
+                                <span class="kpi-change positive">+12.5%</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-header">
+                                <div class="kpi-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17 21V19C17 17.9391 16.5786 16.9217 15.8284 16.1716C15.0783 15.4214 14.0609 15 13 15H5C3.93913 15 5.92172 15.4214 2.17157 16.1716C1.42143 16.9217 1 17.9391 1 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M23 21V19C23 18.1332 22.7361 17.3024 22.2512 16.6193C21.7664 15.9361 21.0872 15.4429 20.3127 15.2134" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16 3.13A4.001 4.001 0 0 1 16 10.87" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="kpi-title">Active Users</h3>
+                            </div>
+                            <div class="kpi-content">
+                                <p class="kpi-value">8,456</p>
+                                <span class="kpi-change positive">+8.2%</span>
+                            </div>
+                        </div>
+                        <div class="kpi-card">
+                            <div class="kpi-header">
+                                <div class="kpi-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3 3V21H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M9 9L12 6L16 10L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="kpi-title">Conversion Rate</h3>
+                            </div>
+                            <div class="kpi-content">
+                                <p class="kpi-value">3.2%</p>
+                                <span class="kpi-change negative">-1.1%</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Grid -->
+                    <div class="charts-grid">
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>Revenue Trend</h3>
+                                <select class="chart-filter">
+                                    <option>Last 7 days</option>
+                                    <option>Last 30 days</option>
+                                    <option>Last 3 months</option>
+                                </select>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-header">
+                                <h3>User Acquisition</h3>
+                                <select class="chart-filter">
+                                    <option>This month</option>
+                                    <option>Last month</option>
+                                    <option>This quarter</option>
+                                </select>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="usersChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Data Table -->
+                    <div class="table-card">
+                        <div class="table-header">
+                            <h3>Top Performing Pages</h3>
+                            <input type="search" placeholder="Search pages..." class="search-input">
+                        </div>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Page</th>
+                                        <th>Views</th>
+                                        <th>Unique Visitors</th>
+                                        <th>Bounce Rate</th>
+                                        <th>Conversion</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>/dashboard</td>
+                                        <td>15,240</td>
+                                        <td>12,890</td>
+                                        <td>24.5%</td>
+                                        <td>4.2%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>/analytics</td>
+                                        <td>8,560</td>
+                                        <td>7,340</td>
+                                        <td>31.2%</td>
+                                        <td>3.8%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>/reports</td>
+                                        <td>6,780</td>
+                                        <td>5,920</td>
+                                        <td>28.9%</td>
+                                        <td>5.1%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>/settings</td>
+                                        <td>4,320</td>
+                                        <td>3,890</td>
+                                        <td>18.7%</td>
+                                        <td>2.9%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>/profile</td>
+                                        <td>3,650</td>
+                                        <td>3,210</td>
+                                        <td>22.1%</td>
+                                        <td>1.8%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Sales Section -->
+                <section id="sales" class="section">
+                    <div class="section-header">
+                        <h2>Sales Analytics</h2>
+                        <p>Track sales performance and revenue metrics</p>
+                    </div>
+                    <div class="placeholder-content">
+                        <div class="placeholder-card">
+                            <h3>Sales Analytics Content</h3>
+                            <p>This section will contain sales-specific charts, metrics, and analysis tools.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Users Section -->
+                <section id="users" class="section">
+                    <div class="section-header">
+                        <h2>User Analytics</h2>
+                        <p>Analyze user behavior and engagement patterns</p>
+                    </div>
+                    <div class="placeholder-content">
+                        <div class="placeholder-card">
+                            <h3>User Analytics Content</h3>
+                            <p>This section will contain user behavior analysis, demographics, and engagement metrics.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Performance Section -->
+                <section id="performance" class="section">
+                    <div class="section-header">
+                        <h2>Performance Metrics</h2>
+                        <p>Monitor system performance and optimization opportunities</p>
+                    </div>
+                    <div class="placeholder-content">
+                        <div class="placeholder-card">
+                            <h3>Performance Metrics Content</h3>
+                            <p>This section will contain system performance data, load times, and optimization insights.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Reports Section -->
+                <section id="reports" class="section">
+                    <div class="section-header">
+                        <h2>Reports</h2>
+                        <p>Generate and view detailed analytics reports</p>
+                    </div>
+                    <div class="placeholder-content">
+                        <div class="placeholder-card">
+                            <h3>Reports Content</h3>
+                            <p>This section will contain report generation tools and downloadable analytics reports.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Test Section for Scrolling -->
+                <section id="test-scroll" class="section">
+                    <div class="section-header">
+                        <h2>Test Content for Scrolling</h2>
+                        <p>This content is added to test the sticky navbar functionality</p>
+                    </div>
+                    <div class="placeholder-content">
+                        <div class="placeholder-card" style="height: 600px; background: linear-gradient(45deg, #f8f9fa, #e9ecef); margin: 2rem 0;">
+                            <h3>Scroll Test Area 1</h3>
+                            <p>This is a tall content area to enable scrolling. The navbar should stick to the top when you scroll down.</p>
+                        </div>
+                        <div class="placeholder-card" style="height: 600px; background: linear-gradient(45deg, #e9ecef, #f8f9fa); margin: 2rem 0;">
+                            <h3>Scroll Test Area 2</h3>
+                            <p>Continue scrolling to test the sticky navbar behavior. The navbar should remain visible at the top.</p>
+                        </div>
+                        <div class="placeholder-card" style="height: 600px; background: linear-gradient(45deg, #f8f9fa, #dee2e6); margin: 2rem 0;">
+                            <h3>Scroll Test Area 3</h3>
+                            <p>More content to ensure sufficient scroll height for testing the sticky navbar functionality.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/dashboard.js"></script>
+    <script>
+        // Add loading animation and smooth entry effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add entrance animations to cards
+            const cards = document.querySelectorAll('.kpi-card, .chart-card, .table-card');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            cards.forEach((card, index) => {
+                // Set initial state
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+                
+                // Observe for animation
+                observer.observe(card);
+            });
+
+            // Add click animations to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const ripple = document.createElement('span');
+                    const rect = this.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const x = e.clientX - rect.left - size / 2;
+                    const y = e.clientY - rect.top - size / 2;
+                    
+                    ripple.style.width = ripple.style.height = size + 'px';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.classList.add('ripple');
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Add smooth scrolling for navigation
+            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add hover effects to table rows
+            const tableRows = document.querySelectorAll('.data-table tbody tr');
+            tableRows.forEach(row => {
+                row.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.02)';
+                    this.style.boxShadow = '0 4px 12px rgba(54, 25, 104, 0.1)';
+                });
+                
+                row.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+    
+    <style>
+        /* Additional animations and effects */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+        }
+        
+        @keyframes ripple-animation {
+            to {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        .btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .data-table tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        /* Loading states */
+        .loading {
+            position: relative;
+            pointer-events: none;
+        }
+        
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            margin: -10px 0 0 -10px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Enhance chart containers */
+        .chart-container {
+            background: linear-gradient(135deg, rgba(54, 25, 104, 0.02) 0%, rgba(153, 103, 209, 0.02) 100%);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+        }
+        
+        /* Smooth section transitions */
+        .section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Add subtle pulse to KPI values */
+        .kpi-value {
+            animation: subtle-pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes subtle-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.9; }
+        }
+        
+        /* Enhance search input */
+        .search-input:focus {
+            transform: scale(1.02);
+        }
+        
+        /* Add gradient borders to important elements */
+        .dashboard-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+        
+        .dashboard-header {
+            position: relative;
+        }
+    </style>
+</body>
+</html>

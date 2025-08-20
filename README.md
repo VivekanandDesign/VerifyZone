@@ -2,7 +2,7 @@
 
 A modern, responsive landing page with two integrated dashboard applications built with HTML, CSS, and JavaScript.
 
-## 🎨 Design System
+## Design System
 
 ### Colors
 - **Primary Color**: `#361968` - Deep purple used for headers, primary buttons, and main text
@@ -14,7 +14,7 @@ A modern, responsive landing page with two integrated dashboard applications bui
 - **Analytics Dashboard**: Data visualization with charts, KPIs, and analytics tables
 - **Management Dashboard**: System administration with user management, settings, and system monitoring
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 Vzone/
@@ -23,13 +23,13 @@ Vzone/
 │   └── styles.css          # Landing page styles
 ├── js/
 │   └── script.js           # Landing page functionality
-├── dashboard1/             # Analytics Dashboard
+├── VZoneDashboard/             # Analytics Dashboard
 │   ├── index.html
 │   ├── css/
 │   │   └── dashboard.css
 │   └── js/
 │       └── dashboard.js
-├── dashboard2/             # Management Dashboard
+├── XZoneDashboard/             # Management Dashboard
 │   ├── index.html
 │   ├── css/
 │   │   └── management.css
@@ -42,7 +42,7 @@ Vzone/
 └── README.md
 ```
 
-## 🚀 Features
+## Features
 
 ### Landing Page
 - **Responsive Design**: Mobile-first approach with breakpoints for tablets and desktops
@@ -64,7 +64,7 @@ Vzone/
 - **Activity Feed**: Live system activity monitoring
 - **Administrative Tools**: Comprehensive management interface
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **HTML5**: Semantic markup structure
 - **CSS3**: Modern styling with Flexbox and Grid layouts
@@ -105,7 +105,7 @@ Vzone/
 - **Reduced Motion Support**: Respects user preferences for reduced animations
 - **Focus Management**: Clear focus indicators and logical tab order
 
-## 🎯 Key Features
+## Key Features
 
 ### Performance
 - **Optimized Images**: Placeholder system for future image integration
@@ -123,14 +123,14 @@ Vzone/
 - **Error Handling**: User-friendly error messages and notifications
 - **Cross-browser Compatibility**: Modern browser support
 
-## 🚀 Getting Started
+## Getting Started
 
 1. **Open the project**: Simply open `index.html` in a modern web browser
 2. **Navigate**: Use the navigation menu or dashboard buttons to explore
 3. **Analytics Dashboard**: Click "Analytics Dashboard" to view data visualization tools
 4. **Management Dashboard**: Click "Management Dashboard" to access administrative features
 
-## 📝 Development
+## Development
 
 ### File Organization
 - Each dashboard is self-contained with its own CSS and JavaScript files
@@ -142,18 +142,18 @@ Vzone/
 - Font family can be changed by updating Google Fonts import
 - Dashboard content can be extended by adding new sections
 
-## 🔧 Browser Support
+## Browser Support
 
 - Chrome 90+
 - Firefox 88+
 - Safari 14+
 - Edge 90+
 
-## 📄 License
+## License
 
 This project is created for demonstration purposes. Feel free to use and modify as needed.
 
-## 🤝 Contributing
+## Contributing
 
 1. Follow the existing code style and organization
 2. Maintain responsive design principles

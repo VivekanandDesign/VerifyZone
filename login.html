@@ -3,26 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - V-Zone</title>
+    <title>Login - VerifyZone</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/global.css">
+    <style>
+        /* Input wrapper positioning */
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper .form-control {
+            padding-left: 3rem;
+            padding-right: 1rem;
+        }
+
+        .password-wrapper .form-control {
+            padding-left: 3rem;
+            padding-right: 3rem;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 1rem;
+            color: var(--text-muted);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: var(--border-radius-sm);
+            transition: color var(--transition-base);
+            z-index: 2;
+        }
+
+        .password-toggle:hover {
+            color: var(--primary-color);
+        }
+
+        .password-toggle:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        /* Ensure proper spacing between form elements */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--transition-base);
+        }
+
+        .forgot-password:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        /* Custom checkbox styling */
+        .form-check {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .form-check-input {
+            margin: 0;
+        }
+
+        .checkmark {
+            display: inline-block;
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 3px;
+            position: relative;
+            transition: all var(--transition-base);
+        }
+
+        .form-check-input:checked + .checkmark {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .form-check-input:checked + .checkmark::after {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 0px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .form-check-input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<body>
+<body class="auth-page">
     <div class="auth-container">
         <div class="auth-card">
+            <!-- Brand Header -->
             <div class="auth-header">
-                <h1 id="formTitle">Welcome to V-Zone</h1>
-                <p id="formSubtitle">Sign in to your account</p>
-            </div>
-
-            <!-- Form Toggle Buttons -->
-            <div class="d-flex justify-content-center mb-6">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary btn-sm active" id="loginToggle">Login</button>
-                    <button type="button" class="btn btn-outline-primary btn-sm" id="registerToggle">Register</button>
+                <div class="auth-brand">
+                    <h1>VerifyZone</h1>
+                    <p>Employee Verification Platform</p>
                 </div>
+                <h2 id="formTitle">Welcome</h2>
+                <p id="formSubtitle">Please sign in to your account</p>
             </div>
 
             <!-- Login Form -->
@@ -32,71 +146,52 @@
 
                 <div class="form-group">
                     <label for="loginEmail" class="form-label">Email Address</label>
-                    <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
+                    <div class="input-wrapper">
+                        <input type="email" id="loginEmail" class="form-control" placeholder="Enter your email" required>
+                        <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <div class="invalid-feedback" id="loginEmailError"></div>
                 </div>
 
                 <div class="form-group">
                     <label for="loginPassword" class="form-label">Password</label>
-                    <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                    <div class="input-wrapper password-wrapper">
+                        <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password" required>
+                        <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="12" cy="16" r="1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <button type="button" class="password-toggle" aria-label="Toggle password visibility">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
                     <div class="invalid-feedback" id="loginPasswordError"></div>
                 </div>
 
-                <div class="form-check mb-4">
-                    <input type="checkbox" id="rememberMe" class="form-check-input">
-                    <label for="rememberMe" class="form-check-label">Remember me</label>
+                <div class="form-options">
+                    <label class="form-check">
+                        <input type="checkbox" id="rememberMe" class="form-check-input">
+                        <span class="checkmark"></span>
+                        Remember me
+                    </label>
+                    <a href="#" id="forgotPasswordLink" class="forgot-password">Forgot Password?</a>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-full">Sign In</button>
-            </form>
-
-            <!-- Registration Form -->
-            <form class="auth-form" id="registerForm" style="display: none;">
-                <div class="alert alert-success" id="regSuccessMessage" style="display: none;"></div>
-                <div class="alert alert-danger" id="regErrorAlert" style="display: none;"></div>
-
-                <div class="form-group">
-                    <label for="firstName" class="form-label">First Name</label>
-                    <input type="text" id="firstName" class="form-control" placeholder="Enter your first name" required>
-                    <div class="invalid-feedback" id="firstNameError"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="lastName" class="form-label">Last Name</label>
-                    <input type="text" id="lastName" class="form-control" placeholder="Enter your last name" required>
-                    <div class="invalid-feedback" id="lastNameError"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="regEmail" class="form-label">Email Address</label>
-                    <input type="email" id="regEmail" class="form-control" placeholder="Enter your email" required>
-                    <div class="invalid-feedback" id="regEmailError"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="regPassword" class="form-label">Password</label>
-                    <input type="password" id="regPassword" class="form-control" placeholder="Create a password" required>
-                    <div class="password-strength">
-                        <div class="strength-bar">
-                            <div class="strength-fill" id="strengthFill"></div>
-                        </div>
-                        <div class="strength-text" id="strengthText">Password strength</div>
-                    </div>
-                    <div class="invalid-feedback" id="regPasswordError"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                    <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm your password" required>
-                    <div class="invalid-feedback" id="confirmPasswordError"></div>
-                </div>
-
-                <div class="form-check mb-4">
-                    <input type="checkbox" id="agreeTerms" class="form-check-input" required>
-                    <label for="agreeTerms" class="form-check-label">I agree to the <a href="#" class="text-primary">Terms of Service</a> and <a href="#" class="text-primary">Privacy Policy</a></label>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-full">Create Account</button>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <span class="btn-text">Sign In</span>
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <polyline points="16,17 21,12 16,7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <line x1="21" y1="12" x2="9" y2="12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
             </form>
 
             <!-- Forgot Password Form -->
@@ -106,308 +201,249 @@
 
                 <div class="form-group">
                     <label for="forgotEmail" class="form-label">Email Address</label>
-                    <input type="email" id="forgotEmail" class="form-control" placeholder="Enter your email" required>
+                    <div class="input-wrapper">
+                        <input type="email" id="forgotEmail" class="form-control" placeholder="Enter your email" required>
+                        <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                     <div class="invalid-feedback" id="forgotEmailError"></div>
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-full">Send Reset Link</button>
-                <button type="button" class="btn btn-outline-primary btn-full mt-3" id="backToLogin">Back to Login</button>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <span class="btn-text">Send Reset Link</span>
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M4 12L20 12M20 12L14 6M20 12L14 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <button type="button" class="btn btn-outline btn-full" id="backToLogin">
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 12L4 12M4 12L10 18M4 12L10 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span class="btn-text">Back to Login</span>
+                </button>
             </form>
 
-            <!-- OTP Verification Form -->
-            <form class="auth-form" id="otpForm" style="display: none;">
-                <div class="alert alert-success" id="otpSuccessMessage" style="display: none;"></div>
-                <div class="alert alert-danger" id="otpErrorAlert" style="display: none;"></div>
-
-                <p class="text-center text-muted mb-4">We've sent a verification code to your email</p>
-
-                <div class="otp-container">
-                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
-                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
-                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
-                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
-                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
-                    <input type="text" class="otp-input" maxlength="1" pattern="[0-9]">
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-full">Verify Code</button>
-                <button type="button" class="btn btn-outline-primary btn-full mt-3" id="resendOtp">Resend Code</button>
-            </form>
-
-            <!-- Reset Password Form -->
-            <form class="auth-form" id="resetPasswordForm" style="display: none;">
-                <div class="alert alert-success" id="resetSuccessMessage" style="display: none;"></div>
-                <div class="alert alert-danger" id="resetErrorAlert" style="display: none;"></div>
-
-                <div class="form-group">
-                    <label for="newPassword" class="form-label">New Password</label>
-                    <input type="password" id="newPassword" class="form-control" placeholder="Enter new password" required>
-                    <div class="password-strength">
-                        <div class="strength-bar">
-                            <div class="strength-fill" id="newPasswordStrengthFill"></div>
-                        </div>
-                        <div class="strength-text" id="newPasswordStrengthText">Password strength</div>
-                    </div>
-                    <div class="invalid-feedback" id="newPasswordError"></div>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirmNewPassword" class="form-label">Confirm New Password</label>
-                    <input type="password" id="confirmNewPassword" class="form-control" placeholder="Confirm new password" required>
-                    <div class="invalid-feedback" id="confirmNewPasswordError"></div>
-                </div>
-
-                <button type="submit" class="btn btn-primary btn-full">Reset Password</button>
-            </form>
-
+            <!-- Footer -->
             <div class="auth-footer">
-                <p id="authFooterText">Don't have an account? <a href="#" id="switchToRegister">Sign up here</a></p>
-                <p><a href="#" id="forgotPasswordLink">Forgot your password?</a></p>
+                <p>Need an account? <a href="#" class="link">Contact Administrator</a></p>
             </div>
         </div>
     </div>
 
-    <style>
-        /* Custom styles for form toggle and special auth components */
-        .btn-group {
-            display: flex;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            background: var(--bg-light);
-            padding: 4px;
-        }
-
-        .btn-group .btn {
-            margin: 0;
-            border-radius: var(--border-radius-sm);
-            border: none;
-            flex: 1;
-        }
-
-        .btn-group .btn.active {
-            background: var(--primary-color);
-            color: var(--text-light);
-        }
-
-        .btn-group .btn:not(.active) {
-            background: transparent;
-            color: var(--text-dark);
-        }
-
-        .btn-group .btn:not(.active):hover {
-            background: rgba(54, 25, 104, 0.1);
-        }
-
-        /* OTP specific styles are already in global.css */
-    </style>
-
     <script>
-        // Form switching logic
-        const loginToggle = document.getElementById('loginToggle');
-        const registerToggle = document.getElementById('registerToggle');
+        // Form switching functionality
         const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
         const forgotPasswordForm = document.getElementById('forgotPasswordForm');
-        const otpForm = document.getElementById('otpForm');
-        const resetPasswordForm = document.getElementById('resetPasswordForm');
+        const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+        const backToLogin = document.getElementById('backToLogin');
         const formTitle = document.getElementById('formTitle');
         const formSubtitle = document.getElementById('formSubtitle');
-        const authFooterText = document.getElementById('authFooterText');
 
-        // Toggle between login and register
-        loginToggle.addEventListener('click', () => {
-            loginToggle.classList.add('active');
-            registerToggle.classList.remove('active');
-            showForm('login');
-        });
+        // Password visibility toggle
+        const passwordToggle = document.querySelector('.password-toggle');
+        const passwordInput = document.getElementById('loginPassword');
 
-        registerToggle.addEventListener('click', () => {
-            registerToggle.classList.add('active');
-            loginToggle.classList.remove('active');
-            showForm('register');
-        });
-
-        // Forgot password link
-        document.getElementById('forgotPasswordLink').addEventListener('click', (e) => {
-            e.preventDefault();
-            showForm('forgot');
-        });
-
-        // Back to login from forgot password
-        document.getElementById('backToLogin').addEventListener('click', () => {
-            showForm('login');
-        });
-
-        // Switch to register from footer
-        document.getElementById('switchToRegister').addEventListener('click', (e) => {
-            e.preventDefault();
-            registerToggle.click();
-        });
-
-        function showForm(type) {
-            // Hide all forms
-            const forms = [loginForm, registerForm, forgotPasswordForm, otpForm, resetPasswordForm];
-            forms.forEach(form => form.style.display = 'none');
-
-            // Hide toggle buttons for certain forms
-            const toggleContainer = document.querySelector('.btn-group').parentElement;
-
-            switch(type) {
-                case 'login':
-                    loginForm.style.display = 'block';
-                    toggleContainer.style.display = 'flex';
-                    formTitle.textContent = 'Welcome to V-Zone';
-                    formSubtitle.textContent = 'Sign in to your account';
-                    authFooterText.innerHTML = `Don't have an account? <a href="#" id="switchToRegister">Sign up here</a>`;
-                    break;
-                case 'register':
-                    registerForm.style.display = 'block';
-                    toggleContainer.style.display = 'flex';
-                    formTitle.textContent = 'Join V-Zone';
-                    formSubtitle.textContent = 'Create your account';
-                    authFooterText.innerHTML = `Already have an account? <a href="#" id="switchToLogin">Sign in here</a>`;
-                    break;
-                case 'forgot':
-                    forgotPasswordForm.style.display = 'block';
-                    toggleContainer.style.display = 'none';
-                    formTitle.textContent = 'Reset Password';
-                    formSubtitle.textContent = 'Enter your email to receive reset instructions';
-                    authFooterText.innerHTML = '';
-                    break;
-                case 'otp':
-                    otpForm.style.display = 'block';
-                    toggleContainer.style.display = 'none';
-                    formTitle.textContent = 'Verify Email';
-                    formSubtitle.textContent = 'Enter the verification code sent to your email';
-                    authFooterText.innerHTML = '';
-                    break;
-                case 'reset':
-                    resetPasswordForm.style.display = 'block';
-                    toggleContainer.style.display = 'none';
-                    formTitle.textContent = 'New Password';
-                    formSubtitle.textContent = 'Create a strong new password';
-                    authFooterText.innerHTML = '';
-                    break;
-            }
-
-            // Re-bind switch to login link if it exists
-            const switchToLogin = document.getElementById('switchToLogin');
-            if (switchToLogin) {
-                switchToLogin.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    loginToggle.click();
-                });
-            }
-
-            // Re-bind switch to register link if it exists
-            const switchToRegister = document.getElementById('switchToRegister');
-            if (switchToRegister) {
-                switchToRegister.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    registerToggle.click();
-                });
-            }
+        if (passwordToggle) {
+            passwordToggle.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                // Update icon
+                const icon = this.querySelector('svg');
+                if (type === 'text') {
+                    icon.innerHTML = `<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+                } else {
+                    icon.innerHTML = `<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`;
+                }
+            });
         }
 
-        // Password strength checker
-        function checkPasswordStrength(password, fillElement, textElement) {
-            const strength = {
-                0: { text: 'Very Weak', class: 'weak', width: '20%' },
-                1: { text: 'Weak', class: 'weak', width: '40%' },
-                2: { text: 'Fair', class: 'medium', width: '60%' },
-                3: { text: 'Good', class: 'medium', width: '80%' },
-                4: { text: 'Strong', class: 'strong', width: '100%' }
-            };
+        // Switch to forgot password form
+        forgotPasswordLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginForm.style.display = 'none';
+            forgotPasswordForm.style.display = 'block';
+            formTitle.textContent = 'Reset Password';
+            formSubtitle.textContent = 'Enter your email to receive a reset link';
+        });
 
-            let score = 0;
-            if (password.length >= 8) score++;
-            if (/[a-z]/.test(password)) score++;
-            if (/[A-Z]/.test(password)) score++;
-            if (/[0-9]/.test(password)) score++;
-            if (/[^A-Za-z0-9]/.test(password)) score++;
+        // Switch back to login form
+        backToLogin.addEventListener('click', function() {
+            forgotPasswordForm.style.display = 'none';
+            loginForm.style.display = 'block';
+            formTitle.textContent = 'Welcome Back';
+            formSubtitle.textContent = 'Please sign in to your account';
+        });
 
-            const result = strength[Math.min(score, 4)];
+        // Login form submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
             
-            fillElement.style.width = result.width;
-            fillElement.className = `strength-fill ${result.class}`;
-            textElement.textContent = result.text;
-            textElement.className = `strength-text text-${result.class === 'weak' ? 'danger' : result.class === 'medium' ? 'warning' : 'success'}`;
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const rememberMe = document.getElementById('rememberMe').checked;
+
+            // Clear previous errors
+            clearErrors();
+
+            // Basic validation
+            if (!validateEmail(email)) {
+                showError('loginEmailError', 'Please enter a valid email address');
+                return;
+            }
+
+            if (password.length < 6) {
+                showError('loginPasswordError', 'Password must be at least 6 characters');
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.querySelector('.btn-text').textContent;
+            submitBtn.querySelector('.btn-text').textContent = 'Signing In...';
+            submitBtn.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                // Reset button state
+                submitBtn.querySelector('.btn-text').textContent = originalText;
+                submitBtn.disabled = false;
+
+                // Check credentials (demo purposes)
+                if (email === 'admin@verifyzone.com' && password === 'admin123') {
+                    showSuccess('successMessage', 'Login successful! Redirecting...');
+                    setTimeout(() => {
+                        window.location.href = 'dashboard1/index.html';
+                    }, 1000);
+                } else {
+                    showError('errorAlert', 'Invalid email or password. Please try again.');
+                }
+            }, 1500);
+        });
+
+        // Forgot password form submission
+        forgotPasswordForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('forgotEmail').value;
+
+            // Clear previous errors
+            clearForgotErrors();
+
+            // Basic validation
+            if (!validateEmail(email)) {
+                showError('forgotEmailError', 'Please enter a valid email address');
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.querySelector('.btn-text').textContent;
+            submitBtn.querySelector('.btn-text').textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            // Simulate API call
+            setTimeout(() => {
+                // Reset button state
+                submitBtn.querySelector('.btn-text').textContent = originalText;
+                submitBtn.disabled = false;
+
+                showSuccess('forgotSuccessMessage', 'Password reset link sent to your email!');
+                
+                // Auto redirect back to login after 3 seconds
+                setTimeout(() => {
+                    backToLogin.click();
+                }, 3000);
+            }, 1500);
+        });
+
+        // Utility functions
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
         }
 
-        // Password strength for registration
-        document.getElementById('regPassword').addEventListener('input', (e) => {
-            const fillElement = document.getElementById('strengthFill');
-            const textElement = document.getElementById('strengthText');
-            checkPasswordStrength(e.target.value, fillElement, textElement);
-        });
+        function showError(elementId, message) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = message;
+                element.style.display = 'block';
+                
+                // For form validation errors
+                if (elementId.includes('Error')) {
+                    const input = element.previousElementSibling;
+                    if (input && input.classList) {
+                        input.classList.add('is-invalid');
+                    }
+                }
+            }
+        }
 
-        // Password strength for reset password
-        document.getElementById('newPassword').addEventListener('input', (e) => {
-            const fillElement = document.getElementById('newPasswordStrengthFill');
-            const textElement = document.getElementById('newPasswordStrengthText');
-            checkPasswordStrength(e.target.value, fillElement, textElement);
-        });
+        function showSuccess(elementId, message) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.textContent = message;
+                element.style.display = 'block';
+            }
+        }
 
-        // OTP input handling
-        const otpInputs = document.querySelectorAll('.otp-input');
-        otpInputs.forEach((input, index) => {
-            input.addEventListener('input', (e) => {
-                const value = e.target.value.replace(/[^0-9]/g, '');
-                e.target.value = value;
-
-                if (value && index < otpInputs.length - 1) {
-                    otpInputs[index + 1].focus();
+        function clearErrors() {
+            const errorElements = ['loginEmailError', 'loginPasswordError', 'errorAlert'];
+            errorElements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.style.display = 'none';
+                    element.textContent = '';
                 }
             });
 
-            input.addEventListener('keydown', (e) => {
-                if (e.key === 'Backspace' && !e.target.value && index > 0) {
-                    otpInputs[index - 1].focus();
+            // Remove invalid classes
+            document.querySelectorAll('.is-invalid').forEach(input => {
+                input.classList.remove('is-invalid');
+            });
+        }
+
+        function clearForgotErrors() {
+            const errorElements = ['forgotEmailError', 'forgotErrorAlert'];
+            errorElements.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    element.style.display = 'none';
+                    element.textContent = '';
                 }
             });
-        });
 
-        // Form submissions (basic validation - replace with actual authentication logic)
-        document.getElementById('loginForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Add your login logic here
-            console.log('Login form submitted');
-        });
+            // Remove invalid classes
+            document.querySelectorAll('.is-invalid').forEach(input => {
+                input.classList.remove('is-invalid');
+            });
+        }
 
-        document.getElementById('registerForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Add your registration logic here
-            console.log('Registration form submitted');
-            // Simulate moving to OTP verification
-            // showForm('otp');
-        });
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Focus on email input
+            const emailInput = document.getElementById('loginEmail');
+            if (emailInput) {
+                emailInput.focus();
+            }
 
-        document.getElementById('forgotPasswordForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Add your forgot password logic here
-            console.log('Forgot password form submitted');
-            // Simulate moving to OTP verification
-            // showForm('otp');
+            // Add input event listeners for real-time validation
+            const inputs = document.querySelectorAll('.form-control');
+            inputs.forEach(input => {
+                input.addEventListener('input', function() {
+                    if (this.classList.contains('is-invalid')) {
+                        this.classList.remove('is-invalid');
+                        const errorElement = document.getElementById(this.id + 'Error');
+                        if (errorElement) {
+                            errorElement.style.display = 'none';
+                        }
+                    }
+                });
+            });
         });
-
-        document.getElementById('otpForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Add your OTP verification logic here
-            console.log('OTP form submitted');
-            // Simulate moving to reset password
-            // showForm('reset');
-        });
-
-        document.getElementById('resetPasswordForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            // Add your reset password logic here
-            console.log('Reset password form submitted');
-            // Simulate success and return to login
-            // showForm('login');
-        });
-
-        // Initialize the form
-        showForm('login');
     </script>
 </body>
 </html>

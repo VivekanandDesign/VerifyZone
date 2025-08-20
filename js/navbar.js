@@ -10,8 +10,8 @@ class GlobalNavbar {
         const filename = path.split('/').pop();
         
         if (filename === 'blog.html') return 'blog';
-        if (path.includes('dashboard1')) return 'dashboard1';
-        if (path.includes('dashboard2')) return 'dashboard2';
+        if (path.includes('VZoneDashboard')) return 'VZoneDashboard';
+        if (path.includes('XZoneDashboard')) return 'XZoneDashboard';
         return 'home';
     }
 
@@ -23,8 +23,8 @@ class GlobalNavbar {
         // Base path for links
         let basePath = '';
         if (this.currentPage === 'blog') basePath = '';
-        if (this.currentPage === 'dashboard1') basePath = '../';
-        if (this.currentPage === 'dashboard2') basePath = '../';
+        if (this.currentPage === 'VZoneDashboard') basePath = '../';
+        if (this.currentPage === 'XZoneDashboard') basePath = '../';
 
         return `
             <header class="header" id="globalHeader">

@@ -449,7 +449,9 @@ function handleResize() {
     } else {
         if (navToggle) navToggle.style.display = 'none';
         nav.classList.remove('active');
-        if (navToggle) navToggle.innerHTML = '☰';
+        if (navToggle) navToggle.innerHTML = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12L21 12M3 6L21 6M3 18L21 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
     }
 }
 
@@ -532,7 +534,13 @@ function showDashboardMessage(buttonText) {
     toast.className = 'dashboard-toast';
     toast.innerHTML = `
         <div class="toast-content">
-            <span class="toast-icon">🔒</span>
+            <span class="toast-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="3" y="11" width="18" height="10" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                    <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </span>
             <span class="toast-message">${buttonText} is currently unavailable for demo purposes</span>
         </div>
     `;

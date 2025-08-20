@@ -9,7 +9,7 @@ class DashboardNavbar {
         const isVZone = this.dashboardType === 'v-zone';
         const dashboardName = isVZone ? 'V-Zone' : 'X-Zone';
         const otherDashboard = isVZone ? 'X-Zone' : 'V-Zone';
-        const otherDashboardPath = isVZone ? '../dashboard2/index.html' : '../dashboard1/index.html';
+        const otherDashboardPath = isVZone ? '../XZoneDashboard/index.html' : '../VZoneDashboard/index.html';
 
         return `
             <nav class="top-navbar sticky" id="dashboardTopNav">

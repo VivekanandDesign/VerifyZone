@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - VZone Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/shared/css/common.css">
+    <link rel="stylesheet" href="/VZoneDashboard/css/vzone-styles.css">
+    <link rel="stylesheet" href="/VZoneDashboard/css/vzone-dashboard.css">
+</head>
+<body>
+    <div class="page-content">
+        <div class="page-header">
+            <div class="breadcrumb">
+                <span>Dashboard</span>
+                <span class="separator">/</span>
+                <span class="current">Settings</span>
+            </div>
+            <h1>System Settings</h1>
+            <p>Configure your dashboard preferences and system settings</p>
+        </div>
+
+        <div class="settings-container">
+            <!-- General Settings -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M12,8A4,4 0 0,1 16,12A4,4 0 0,1 12,16A4,4 0 0,1 8,12A4,4 0 0,1 12,8M12,10A2,2 0 0,0 10,12A2,2 0 0,0 12,14A2,2 0 0,0 14,12A2,2 0 0,0 12,10M10,22C9.75,22 9.54,21.82 9.5,21.58L9.13,18.93C8.5,18.68 7.96,18.34 7.44,17.94L4.95,18.95C4.73,19.03 4.46,18.95 4.34,18.73L2.34,15.27C2.21,15.05 2.27,14.78 2.46,14.63L4.57,12.97L4.5,12L4.57,11L2.46,9.37C2.27,9.22 2.21,8.95 2.34,8.73L4.34,5.27C4.46,5.05 4.73,4.96 4.95,5.05L7.44,6.05C7.96,5.66 8.5,5.32 9.13,5.07L9.5,2.42C9.54,2.18 9.75,2 10,2H14C14.25,2 14.46,2.18 14.5,2.42L14.87,5.07C15.5,5.32 16.04,5.66 16.56,6.05L19.05,5.05C19.27,4.96 19.54,5.05 19.66,5.27L21.66,8.73C21.79,8.95 21.73,9.22 21.54,9.37L19.43,11L19.5,12L19.43,13L21.54,14.63C21.73,14.78 21.79,15.05 21.66,15.27L19.66,18.73C19.54,18.95 19.27,19.04 19.05,18.95L16.56,17.95C16.04,18.34 15.5,18.68 14.87,18.93L14.5,21.58C14.46,21.82 14.25,22 14,22H10M11.25,4L10.88,6.61C9.68,6.86 8.62,7.5 7.85,8.39L5.44,7.35L4.69,8.65L6.8,10.2C6.4,11.37 6.4,12.64 6.8,13.8L4.68,15.36L5.43,16.66L7.86,15.62C8.63,16.5 9.68,17.14 10.87,17.38L11.24,20H12.76L13.13,17.39C14.32,17.14 15.37,16.5 16.14,15.62L18.57,16.66L19.32,15.36L17.2,13.81C17.6,12.64 17.6,11.37 17.2,10.2L19.31,8.65L18.56,7.35L16.15,8.39C15.38,7.5 14.32,6.86 13.12,6.62L12.75,4H11.25Z"/>
+                        </svg>
+                        <h2>General Settings</h2>
+                    </div>
+                </div>
+
+                <div class="settings-content">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Language</h3>
+                            <p>Select your preferred language</p>
+                        </div>
+                        <div class="setting-control">
+                            <select id="language">
+                                <option value="en" selected>English</option>
+                                <option value="es">Spanish</option>
+                                <option value="fr">French</option>
+                                <option value="de">German</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Time Zone</h3>
+                            <p>Set your local time zone</p>
+                        </div>
+                        <div class="setting-control">
+                            <select id="timezone">
+                                <option value="UTC-8">Pacific Time (UTC-8)</option>
+                                <option value="UTC-7">Mountain Time (UTC-7)</option>
+                                <option value="UTC-6">Central Time (UTC-6)</option>
+                                <option value="UTC-5" selected>Eastern Time (UTC-5)</option>
+                                <option value="UTC+0">GMT (UTC+0)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Date Format</h3>
+                            <p>Choose how dates are displayed</p>
+                        </div>
+                        <div class="setting-control">
+                            <select id="dateFormat">
+                                <option value="MM/DD/YYYY" selected>MM/DD/YYYY</option>
+                                <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appearance Settings -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M12,18.5A6.5,6.5 0 0,1 5.5,12A6.5,6.5 0 0,1 12,5.5A6.5,6.5 0 0,1 18.5,12A6.5,6.5 0 0,1 12,18.5M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,7A5,5 0 0,0 7,12A5,5 0 0,0 12,17A5,5 0 0,0 17,12A5,5 0 0,0 12,7"/>
+                        </svg>
+                        <h2>Appearance</h2>
+                    </div>
+                </div>
+
+                <div class="settings-content">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Theme</h3>
+                            <p>Choose between light and dark mode</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="theme-selector">
+                                <div class="theme-option active" data-theme="light">
+                                    <div class="theme-preview light-theme">
+                                        <div class="preview-header"></div>
+                                        <div class="preview-content"></div>
+                                    </div>
+                                    <span>Light</span>
+                                </div>
+                                <div class="theme-option" data-theme="dark">
+                                    <div class="theme-preview dark-theme">
+                                        <div class="preview-header"></div>
+                                        <div class="preview-content"></div>
+                                    </div>
+                                    <span>Dark</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Sidebar Position</h3>
+                            <p>Choose the position of the navigation sidebar</p>
+                        </div>
+                        <div class="setting-control">
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="sidebarPosition" value="left" checked>
+                                    <span class="radio-custom"></span>
+                                    Left
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="sidebarPosition" value="right">
+                                    <span class="radio-custom"></span>
+                                    Right
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Compact Mode</h3>
+                            <p>Use a more compact layout to fit more content</p>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="compactMode">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21"/>
+                        </svg>
+                        <h2>Notifications</h2>
+                    </div>
+                </div>
+
+                <div class="settings-content">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Browser Notifications</h3>
+                            <p>Receive notifications in your browser</p>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="browserNotifications" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Email Notifications</h3>
+                            <p>Receive notifications via email</p>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="emailNotifications" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Sound Alerts</h3>
+                            <p>Play sounds for important notifications</p>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="soundAlerts">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Notification Frequency</h3>
+                            <p>How often to check for new notifications</p>
+                        </div>
+                        <div class="setting-control">
+                            <select id="notificationFrequency">
+                                <option value="realtime" selected>Real-time</option>
+                                <option value="5min">Every 5 minutes</option>
+                                <option value="15min">Every 15 minutes</option>
+                                <option value="30min">Every 30 minutes</option>
+                                <option value="1hour">Every hour</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Settings -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M13,3V9H21V3M13,21H21V11H13M3,21H11V15H3M3,13H11V3H3V13Z"/>
+                        </svg>
+                        <h2>Dashboard</h2>
+                    </div>
+                </div>
+
+                <div class="settings-content">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Auto-refresh Data</h3>
+                            <p>Automatically refresh dashboard data</p>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="autoRefresh" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Refresh Interval</h3>
+                            <p>How often to refresh the data</p>
+                        </div>
+                        <div class="setting-control">
+                            <select id="refreshInterval">
+                                <option value="30">30 seconds</option>
+                                <option value="60" selected>1 minute</option>
+                                <option value="300">5 minutes</option>
+                                <option value="600">10 minutes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Default Page</h3>
+                            <p>Page to load when accessing the dashboard</p>
+                        </div>
+                        <div class="setting-control">
+                            <select id="defaultPage">
+                                <option value="dashboard" selected>Dashboard Overview</option>
+                                <option value="ex-zone">Ex-Zone</option>
+                                <option value="verification">Verification Center</option>
+                                <option value="discrepancies">Discrepancies</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Items per Page</h3>
+                            <p>Number of items to display in lists</p>
+                        </div>
+                        <div class="setting-control">
+                            <select id="itemsPerPage">
+                                <option value="10">10 items</option>
+                                <option value="25" selected>25 items</option>
+                                <option value="50">50 items</option>
+                                <option value="100">100 items</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Settings -->
+            <div class="settings-section">
+                <div class="section-header">
+                    <div class="section-title">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.2C16,16.8 15.4,17.3 14.8,17.3H9.2C8.6,17.3 8,16.8 8,16.2V12.6C8,12 8.6,11.5 9.2,11.5V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,10V11.5H13.5V10C13.5,8.7 12.8,8.2 12,8.2Z"/>
+                        </svg>
+                        <h2>Security</h2>
+                    </div>
+                </div>
+
+                <div class="settings-content">
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Session Timeout</h3>
+                            <p>Automatically log out after period of inactivity</p>
+                        </div>
+                        <div class="setting-control">
+                            <select id="sessionTimeout">
+                                <option value="15">15 minutes</option>
+                                <option value="30" selected>30 minutes</option>
+                                <option value="60">1 hour</option>
+                                <option value="120">2 hours</option>
+                                <option value="0">Never</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Two-Factor Authentication</h3>
+                            <p>Add an extra layer of security to your account</p>
+                        </div>
+                        <div class="setting-control">
+                            <button class="btn btn-outline setup-2fa-btn">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <path d="M12,1L3,5V11C3,16.55 6.84,21.74 12,23C17.16,21.74 21,16.55 21,11V5L12,1M12,7C13.4,7 14.8,8.6 14.8,10V11.5C15.4,11.5 16,12.1 16,12.7V16.2C16,16.8 15.4,17.3 14.8,17.3H9.2C8.6,17.3 8,16.8 8,16.2V12.6C8,12 8.6,11.5 9.2,11.5V10C9.2,8.6 10.6,7 12,7M12,8.2C11.2,8.2 10.5,8.7 10.5,10V11.5H13.5V10C13.5,8.7 12.8,8.2 12,8.2Z"/>
+                                </svg>
+                                Setup 2FA
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="setting-item">
+                        <div class="setting-info">
+                            <h3>Login Alerts</h3>
+                            <p>Get notified when someone logs into your account</p>
+                        </div>
+                        <div class="setting-control">
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="loginAlerts" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save/Reset Actions -->
+            <div class="settings-actions">
+                <button class="btn btn-primary save-settings-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M15,9H5V5H15M12,19A3,3 0 0,1 9,16A3,3 0 0,1 12,13A3,3 0 0,1 15,16A3,3 0 0,1 12,19M17,3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V7L17,3Z"/>
+                    </svg>
+                    Save Settings
+                </button>
+                <button class="btn btn-secondary reset-settings-btn">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                        <path d="M12,4C14.1,4 16.1,4.8 17.6,6.3C20.7,9.4 20.7,14.5 17.6,17.6C15.8,19.5 13.3,20.2 10.9,19.9L11.4,17.9C13.1,18.1 14.9,17.5 16.2,16.2C18.5,13.9 18.5,10.1 16.2,7.7C15.1,6.6 13.5,6 12,6V10.5L7,5.5L12,0.5V4M6.3,17.6C3.7,15 3.3,11 5.1,7.9L6.6,9.4C5.5,11.6 5.9,14.4 7.8,16.2C8.3,16.7 8.9,17.1 9.6,17.4L9,19.4C8,19 7.1,18.4 6.3,17.6Z"/>
+                    </svg>
+                    Reset to Defaults
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .settings-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 2rem;
+            max-width: 800px;
+        }
+
+        .settings-section {
+            background: white;
+            border-radius: 12px;
+            padding: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, #361968, #9967d1);
+            padding: 1.5rem 2rem;
+            border-bottom: none;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-title svg {
+            color: white;
+        }
+
+        .section-title h2 {
+            margin: 0;
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .settings-content {
+            padding: 2rem;
+        }
+
+        .setting-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .setting-item:last-child {
+            border-bottom: none;
+        }
+
+        .setting-info h3 {
+            margin: 0 0 0.3rem 0;
+            color: #333;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .setting-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .setting-control {
+            min-width: 200px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /* Form Controls */
+        select {
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            color: #333;
+            font-size: 0.9rem;
+            min-width: 180px;
+            cursor: pointer;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #9967d1;
+            box-shadow: 0 0 0 3px rgba(153, 103, 209, 0.1);
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            width: 50px;
+            height: 24px;
+            cursor: pointer;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-switch input:checked + .toggle-slider {
+            background-color: #361968;
+        }
+
+        .toggle-switch input:checked + .toggle-slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Theme Selector */
+        .theme-selector {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .theme-option {
+            cursor: pointer;
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .theme-option:hover {
+            background: #f8f9fa;
+        }
+
+        .theme-option.active {
+            background: #e3f2fd;
+            border: 2px solid #361968;
+        }
+
+        .theme-preview {
+            width: 60px;
+            height: 40px;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ddd;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .light-theme {
+            background: white;
+        }
+
+        .light-theme .preview-header {
+            height: 30%;
+            background: #361968;
+        }
+
+        .light-theme .preview-content {
+            height: 70%;
+            background: #f8f9fa;
+        }
+
+        .dark-theme {
+            background: #2d3748;
+        }
+
+        .dark-theme .preview-header {
+            height: 30%;
+            background: #1a202c;
+        }
+
+        .dark-theme .preview-content {
+            height: 70%;
+            background: #4a5568;
+        }
+
+        .theme-option span {
+            font-size: 0.85rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        /* Radio Group */
+        .radio-group {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .radio-custom {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-custom {
+            border-color: #361968;
+        }
+
+        .radio-option input[type="radio"]:checked + .radio-custom::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: #361968;
+            border-radius: 50%;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: #361968;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2d1556;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #545b62;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #361968;
+            border: 2px solid #361968;
+        }
+
+        .btn-outline:hover {
+            background: #361968;
+            color: white;
+        }
+
+        /* Settings Actions */
+        .settings-actions {
+            display: flex;
+            gap: 1rem;
+            padding: 2rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .settings-container {
+                margin-top: 1rem;
+            }
+
+            .settings-section {
+                margin: 0 -1rem;
+                border-radius: 0;
+            }
+
+            .section-header,
+            .settings-content {
+                padding: 1.5rem;
+            }
+
+            .setting-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .setting-control {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .settings-actions {
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+
+            .theme-selector {
+                width: 100%;
+                justify-content: space-around;
+            }
+
+            .radio-group {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Theme selection
+            const themeOptions = document.querySelectorAll('.theme-option');
+            themeOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    themeOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Save settings
+            const saveBtn = document.querySelector('.save-settings-btn');
+            saveBtn.addEventListener('click', function() {
+                // Collect all settings
+                const settings = {
+                    language: document.getElementById('language').value,
+                    timezone: document.getElementById('timezone').value,
+                    dateFormat: document.getElementById('dateFormat').value,
+                    theme: document.querySelector('.theme-option.active').dataset.theme,
+                    sidebarPosition: document.querySelector('input[name="sidebarPosition"]:checked').value,
+                    compactMode: document.getElementById('compactMode').checked,
+                    browserNotifications: document.getElementById('browserNotifications').checked,
+                    emailNotifications: document.getElementById('emailNotifications').checked,
+                    soundAlerts: document.getElementById('soundAlerts').checked,
+                    notificationFrequency: document.getElementById('notificationFrequency').value,
+                    autoRefresh: document.getElementById('autoRefresh').checked,
+                    refreshInterval: document.getElementById('refreshInterval').value,
+                    defaultPage: document.getElementById('defaultPage').value,
+                    itemsPerPage: document.getElementById('itemsPerPage').value,
+                    sessionTimeout: document.getElementById('sessionTimeout').value,
+                    loginAlerts: document.getElementById('loginAlerts').checked
+                };
+
+                // Save to localStorage (in a real app, this would go to a server)
+                localStorage.setItem('vzoneSettings', JSON.stringify(settings));
+                
+                // Show success message
+                alert('Settings saved successfully!');
+            });
+
+            // Reset settings
+            const resetBtn = document.querySelector('.reset-settings-btn');
+            resetBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to reset all settings to defaults?')) {
+                    // Reset all form elements to default values
+                    document.getElementById('language').value = 'en';
+                    document.getElementById('timezone').value = 'UTC-5';
+                    document.getElementById('dateFormat').value = 'MM/DD/YYYY';
+                    
+                    // Reset theme
+                    themeOptions.forEach(opt => opt.classList.remove('active'));
+                    document.querySelector('[data-theme="light"]').classList.add('active');
+                    
+                    // Reset radio buttons
+                    document.querySelector('input[value="left"]').checked = true;
+                    
+                    // Reset checkboxes
+                    document.getElementById('compactMode').checked = false;
+                    document.getElementById('browserNotifications').checked = true;
+                    document.getElementById('emailNotifications').checked = true;
+                    document.getElementById('soundAlerts').checked = false;
+                    document.getElementById('autoRefresh').checked = true;
+                    document.getElementById('loginAlerts').checked = true;
+                    
+                    // Reset selects
+                    document.getElementById('notificationFrequency').value = 'realtime';
+                    document.getElementById('refreshInterval').value = '60';
+                    document.getElementById('defaultPage').value = 'dashboard';
+                    document.getElementById('itemsPerPage').value = '25';
+                    document.getElementById('sessionTimeout').value = '30';
+                    
+                    // Clear localStorage
+                    localStorage.removeItem('vzoneSettings');
+                    
+                    alert('Settings reset to defaults!');
+                }
+            });
+
+            // Setup 2FA button
+            const setup2faBtn = document.querySelector('.setup-2fa-btn');
+            setup2faBtn.addEventListener('click', function() {
+                alert('Two-Factor Authentication setup would be implemented here. This would typically involve:\n\n1. QR code generation\n2. Authentication app setup\n3. Verification code entry\n4. Recovery codes generation');
+            });
+
+            // Load saved settings on page load
+            const savedSettings = localStorage.getItem('vzoneSettings');
+            if (savedSettings) {
+                const settings = JSON.parse(savedSettings);
+                
+                // Apply saved settings
+                Object.keys(settings).forEach(key => {
+                    const element = document.getElementById(key);
+                    if (element) {
+                        if (element.type === 'checkbox') {
+                            element.checked = settings[key];
+                        } else {
+                            element.value = settings[key];
+                        }
+                    }
+                });
+                
+                // Handle special cases
+                if (settings.theme) {
+                    themeOptions.forEach(opt => opt.classList.remove('active'));
+                    document.querySelector(`[data-theme="${settings.theme}"]`).classList.add('active');
+                }
+                
+                if (settings.sidebarPosition) {
+                    document.querySelector(`input[value="${settings.sidebarPosition}"]`).checked = true;
+                }
+            }
+
+            // Auto-refresh toggle handler
+            const autoRefreshToggle = document.getElementById('autoRefresh');
+            const refreshIntervalSelect = document.getElementById('refreshInterval');
+            
+            function toggleRefreshInterval() {
+                refreshIntervalSelect.disabled = !autoRefreshToggle.checked;
+                refreshIntervalSelect.style.opacity = autoRefreshToggle.checked ? '1' : '0.5';
+            }
+            
+            autoRefreshToggle.addEventListener('change', toggleRefreshInterval);
+            toggleRefreshInterval(); // Initial state
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Exit Details - VZone Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../shared/css/common.css">
+    <link rel="stylesheet" href="../css/vzone-dashboard.css">
+    <link rel="stylesheet" href="../css/pages/ex-zone.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Navigation Header -->
+        <header class="main-header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">
+                        <h1>VZone</h1>
+                        <span class="logo-subtitle">HR Verification System</span>
+                    </div>
+                </div>
+                
+                <div class="user-section">
+                    <div class="user-info">
+                        <span class="user-name">John Doe</span>
+                        <span class="user-role">HR Manager</span>
+                    </div>
+                    <div class="user-avatar">
+                        <img src="../../assets/avatar.png" alt="User Avatar" onerror="this.style.display='none'">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a href="../index.html">Dashboard</a> 
+                    <span class="separator">›</span>
+                    <a href="#" class="ex-zone-link">Ex-Zone</a>
+                    <span class="separator">›</span>
+                    <span class="current">Add Exit Details</span>
+                </div>
+                <h1 class="page-title">Add Exit Details</h1>
+                <p class="page-description">Record and manage employee exit information</p>
+            </div>
+
+            <div class="page-content">
+                <div class="form-container">
+                    <form class="exit-details-form" id="exitDetailsForm">
+                        <div class="form-section">
+                            <h2 class="section-title">Employee Information</h2>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="employeeId">Employee ID *</label>
+                                    <input type="text" id="employeeId" name="employeeId" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="employeeName">Full Name *</label>
+                                    <input type="text" id="employeeName" name="employeeName" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="department">Department *</label>
+                                    <select id="department" name="department" required>
+                                        <option value="">Select Department</option>
+                                        <option value="hr">Human Resources</option>
+                                        <option value="it">Information Technology</option>
+                                        <option value="finance">Finance</option>
+                                        <option value="marketing">Marketing</option>
+                                        <option value="operations">Operations</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="designation">Designation *</label>
+                                    <input type="text" id="designation" name="designation" required>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h2 class="section-title">Exit Information</h2>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="lastWorkingDay">Last Working Day *</label>
+                                    <input type="date" id="lastWorkingDay" name="lastWorkingDay" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exitType">Exit Type *</label>
+                                    <select id="exitType" name="exitType" required>
+                                        <option value="">Select Exit Type</option>
+                                        <option value="resignation">Resignation</option>
+                                        <option value="termination">Termination</option>
+                                        <option value="retirement">Retirement</option>
+                                        <option value="contract-end">Contract End</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="reasonCategory">Reason Category</label>
+                                    <select id="reasonCategory" name="reasonCategory">
+                                        <option value="">Select Category</option>
+                                        <option value="better-opportunity">Better Opportunity</option>
+                                        <option value="personal-reasons">Personal Reasons</option>
+                                        <option value="relocation">Relocation</option>
+                                        <option value="performance-issues">Performance Issues</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="noticePeriod">Notice Period (Days)</label>
+                                    <input type="number" id="noticePeriod" name="noticePeriod" min="0">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h2 class="section-title">Exit Details</h2>
+                            <div class="form-group full-width">
+                                <label for="exitReason">Detailed Exit Reason</label>
+                                <textarea id="exitReason" name="exitReason" rows="4" placeholder="Please provide detailed reason for exit..."></textarea>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="comments">Additional Comments</label>
+                                <textarea id="comments" name="comments" rows="3" placeholder="Any additional notes or comments..."></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h2 class="section-title">Verification Requirements</h2>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="verificationTypes" value="background">
+                                    <span class="checkmark"></span>
+                                    Background Verification Required
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="verificationTypes" value="reference">
+                                    <span class="checkmark"></span>
+                                    Reference Check Required
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="verificationTypes" value="document">
+                                    <span class="checkmark"></span>
+                                    Document Verification Required
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="verificationTypes" value="compliance">
+                                    <span class="checkmark"></span>
+                                    Compliance Check Required
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="history.back()">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="saveExitDetails">Save Exit Details</button>
+                            <button type="submit" class="btn btn-success">Submit for Processing</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Exit Details Submitted</h3>
+                <button class="modal-close" onclick="closeModal('successModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">✓</div>
+                <p>Exit details have been successfully submitted for processing.</p>
+                <p>Reference ID: <strong id="referenceId">EX-2024-001</strong></p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" onclick="closeModal('successModal')">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../shared/js/session.js"></script>
+    <script src="../js/pages/exit-details.js"></script>
+</body>
+</html>

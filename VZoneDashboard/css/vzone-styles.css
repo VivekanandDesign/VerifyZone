@@ -1,0 +1,130 @@
+/* VZone Application Specific Styles */
+
+/* VZone Brand Colors */
+:root {
+    --vzone-primary: #361968;
+    --vzone-secondary: #9967d1;
+    --vzone-accent: #48cae4;
+    --vzone-success: #28a745;
+    --vzone-warning: #ffc107;
+    --vzone-danger: #dc3545;
+}
+
+/* Navigation Overrides for VZone */
+.navbar {
+    background: linear-gradient(90deg, var(--vzone-primary) 0%, var(--vzone-secondary) 100%);
+    color: white;
+}
+
+.nav-logo h2 {
+    color: white;
+    font-weight: 700;
+}
+
+.nav-menu .nav-link {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.nav-menu .nav-link:hover,
+.nav-menu .nav-link.active {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+}
+
+/* VZone specific component styles */
+.vzone-card {
+    border-left: 4px solid var(--vzone-primary);
+}
+
+.vzone-badge {
+    background: linear-gradient(135deg, var(--vzone-primary), var(--vzone-secondary));
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.vzone-button {
+    background: linear-gradient(135deg, var(--vzone-primary), var(--vzone-secondary));
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    font-weight: 500;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.vzone-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* VZone Charts Theme */
+.vzone-chart {
+    --chart-primary: var(--vzone-primary);
+    --chart-secondary: var(--vzone-secondary);
+    --chart-accent: var(--vzone-accent);
+}
+
+/* Mobile hamburger menu for VZone */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 3px 0;
+    transition: var(--transition);
+}
+
+/* Mobile Navigation */
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: linear-gradient(135deg, var(--vzone-primary), var(--vzone-secondary));
+        width: 100%;
+        text-align: center;
+        transition: var(--transition);
+        box-shadow: var(--shadow);
+        padding: 2rem 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu .nav-link {
+        padding: 1rem;
+        display: block;
+        width: 100%;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}

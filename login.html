@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vzone - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="shared/css/common.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .login-container {
+            background: #ffffff;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(54, 25, 104, 0.2);
+            padding: 2rem;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo {
+            width: 4rem;
+            height: 4rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+
+        .login-logo svg {
+            width: 2rem;
+            height: 2rem;
+            color: #ffffff;
+        }
+
+        .login-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .login-subtitle {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        .login-form {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+            background: #ffffff;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(54, 25, 104, 0.1);
+        }
+
+        .form-input.error {
+            border-color: var(--error-color);
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.25rem;
+            height: 1.25rem;
+            color: var(--text-light);
+        }
+
+        .input-group .form-input {
+            padding-left: 2.75rem;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 0.75rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 0.25rem;
+        }
+
+        .toggle-password:hover {
+            color: var(--primary-color);
+        }
+
+        .toggle-password svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .user-type-selector {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .user-type-option {
+            position: relative;
+        }
+
+        .user-type-radio {
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .user-type-label {
+            display: block;
+            padding: 1rem;
+            border: 2px solid var(--border-color);
+            border-radius: 0.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+
+        .user-type-radio:checked + .user-type-label {
+            border-color: var(--primary-color);
+            background: rgba(54, 25, 104, 0.05);
+            color: var(--primary-color);
+        }
+
+        .user-type-label:hover {
+            border-color: var(--primary-color);
+        }
+
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 0.5rem 0;
+            border-radius: 0.5rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 0.875rem;
+            color: var(--text-color);
+            user-select: none;
+            position: relative;
+        }
+
+        .remember-checkbox {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            width: 0;
+            height: 0;
+        }
+
+        .checkmark {
+            position: relative;
+            display: inline-block;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid #d1d5db;
+            border-radius: 0.375rem;
+            margin-right: 0.75rem;
+            transition: all 0.3s ease;
+            background: #ffffff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .remember-me:hover .checkmark {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(54, 25, 104, 0.1);
+        }
+
+        .remember-checkbox:checked + .checkmark {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(54, 25, 104, 0.2);
+        }
+
+        .remember-checkbox:checked + .checkmark:after {
+            content: '';
+            position: absolute;
+            left: 0.3rem;
+            top: 0.1rem;
+            width: 0.4rem;
+            height: 0.7rem;
+            border: solid white;
+            border-width: 0 2.5px 2.5px 0;
+            transform: rotate(45deg);
+            opacity: 1;
+        }
+
+        .remember-checkbox:focus + .checkmark {
+            box-shadow: 0 0 0 3px rgba(54, 25, 104, 0.2);
+        }
+
+        .forgot-password {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .forgot-password:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+
+        .login-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #ffffff;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(54, 25, 104, 0.3);
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+        }
+
+        .login-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading-spinner {
+            display: none;
+            width: 1rem;
+            height: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 0.5rem;
+        }
+
+        .login-button.loading .loading-spinner {
+            display: inline-block;
+        }
+
+        .error-message {
+            background: rgba(220, 53, 69, 0.1);
+            color: var(--error-color);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            margin-bottom: 1rem;
+            display: none;
+        }
+
+        .dashboard-indicator {
+            background: rgba(54, 25, 104, 0.1);
+            border: 1px solid var(--primary-color);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--primary-color);
+            display: none;
+        }
+
+        .dashboard-indicator.active {
+            display: block;
+        }
+
+        .dashboard-indicator .dashboard-icon {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .demo-credentials {
+            background: var(--surface-color);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .demo-credentials h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .demo-credential-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+        }
+
+        .demo-credential-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .demo-credential-label {
+            color: var(--text-light);
+        }
+
+        .demo-credential-value {
+            color: var(--text-color);
+            font-family: monospace;
+            font-weight: 500;
+        }
+
+        .back-to-home {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border: none;
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            text-decoration: none;
+        }
+
+        .back-to-home:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .back-to-home svg {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 1.5rem;
+                margin: 0.5rem;
+            }
+
+            .login-title {
+                font-size: 1.5rem;
+            }
+
+            .remember-forgot {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+
+            .user-type-selector {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-to-home">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+        Back to Home
+    </a>
+
+    <div class="login-container">
+        <div class="login-header">
+            <div class="login-logo">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </div>
+            <h1 class="login-title">Welcome to Vzone</h1>
+            <p class="login-subtitle">Please sign in to access your dashboard</p>
+        </div>
+
+        <div class="error-message" id="errorMessage"></div>
+
+        <!-- Dashboard Indicator -->
+        <div class="dashboard-indicator" id="dashboardIndicator">
+            <svg class="dashboard-icon" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+            </svg>
+            <span id="dashboardIndicatorText">Accessing Dashboard</span>
+        </div>
+
+        <form class="login-form" id="loginForm">
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <div class="input-group">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <input type="email" id="email" class="form-input" placeholder="Enter your email" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                    <svg class="input-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                    </svg>
+                    <input type="password" id="password" class="form-input" placeholder="Enter your password" required>
+                    <button type="button" class="toggle-password" id="togglePassword">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="remember-forgot">
+                    <label class="remember-me" for="rememberMe">
+                        <input type="checkbox" id="rememberMe" class="remember-checkbox">
+                        <span class="checkmark" role="checkbox" aria-checked="false"></span>
+                        Remember me
+                    </label>
+                    <a href="#" class="forgot-password" id="forgotPassword">Forgot password?</a>
+                </div>
+            </div>
+
+            <button type="submit" class="login-button" id="loginButton">
+                <div class="loading-spinner"></div>
+                Sign In
+            </button>
+        </form>
+
+        <div class="demo-credentials">
+            <h4>Demo Credentials</h4>
+            <div class="demo-credential-item">
+                <span class="demo-credential-label">VZone Dashboard:</span>
+                <span class="demo-credential-value">demo@vzone.com / demo123</span>
+            </div>
+            <div class="demo-credential-item">
+                <span class="demo-credential-label">XZone Dashboard:</span>
+                <span class="demo-credential-value">admin@vzone.com / admin123</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="shared/js/session.js"></script>
+    <script>
+        class LoginManager {
+            constructor() {
+                this.isLoading = false;
+                this.requestedDashboard = null;
+                this.initializeForm();
+                this.handleDashboardRequest();
+            }
+
+            handleDashboardRequest() {
+                // Check for dashboard parameter from URL
+                const urlParams = new URLSearchParams(window.location.search);
+                const dashboardParam = urlParams.get('dashboard');
+                
+                // Check sessionStorage for requested dashboard
+                const storedDashboard = sessionStorage.getItem('requestedDashboard');
+                
+                this.requestedDashboard = dashboardParam || storedDashboard;
+                
+                if (this.requestedDashboard) {
+                    // Update the login form to show which dashboard is being accessed
+                    this.updateLoginFormForDashboard(this.requestedDashboard);
+                }
+            }
+
+            updateLoginFormForDashboard(dashboardType) {
+                const loginTitle = document.querySelector('.login-title');
+                const loginSubtitle = document.querySelector('.login-subtitle');
+                const dashboardIndicator = document.getElementById('dashboardIndicator');
+                const dashboardIndicatorText = document.getElementById('dashboardIndicatorText');
+                const dashboardIcon = dashboardIndicator.querySelector('.dashboard-icon path');
+                
+                if (dashboardType === 'vzone') {
+                    loginTitle.textContent = 'Access VZone Dashboard';
+                    loginSubtitle.textContent = 'Sign in to access your analytics dashboard';
+                    dashboardIndicatorText.textContent = 'Accessing VZone Analytics Dashboard';
+                    
+                    // VZone analytics icon
+                    dashboardIcon.setAttribute('d', 'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z');
+                    
+                    // Pre-fill with demo credentials for VZone
+                    document.getElementById('email').value = 'demo@vzone.com';
+                    document.getElementById('password').value = 'demo123';
+                } else if (dashboardType === 'xzone') {
+                    loginTitle.textContent = 'Access XZone Dashboard';
+                    loginSubtitle.textContent = 'Sign in to access your management dashboard';
+                    dashboardIndicatorText.textContent = 'Accessing XZone Management Dashboard';
+                    
+                    // XZone management icon
+                    dashboardIcon.setAttribute('d', 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z');
+                    
+                    // Pre-fill with admin credentials for XZone
+                    document.getElementById('email').value = 'admin@vzone.com';
+                    document.getElementById('password').value = 'admin123';
+                }
+                
+                // Show the dashboard indicator
+                dashboardIndicator.classList.add('active');
+            }
+
+            initializeForm() {
+                const loginForm = document.getElementById('loginForm');
+                const togglePassword = document.getElementById('togglePassword');
+                const forgotPassword = document.getElementById('forgotPassword');
+                const rememberCheckbox = document.getElementById('rememberMe');
+                const errorMessage = document.getElementById('errorMessage');
+
+                // Handle form submission
+                loginForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.handleLogin();
+                });
+
+                // Handle password toggle
+                togglePassword.addEventListener('click', () => {
+                    this.togglePasswordVisibility();
+                });
+
+                // Handle forgot password
+                forgotPassword.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.handleForgotPassword();
+                });
+
+                // Handle remember checkbox accessibility
+                rememberCheckbox.addEventListener('change', () => {
+                    const checkmark = document.querySelector('.checkmark');
+                    checkmark.setAttribute('aria-checked', rememberCheckbox.checked);
+                });
+
+                // Handle demo credential clicks
+                this.initializeDemoCredentials();
+
+                // Load remember me preference
+                this.loadRememberMe();
+
+                // Check if user is already logged in
+                this.checkExistingSession();
+            }
+
+            initializeDemoCredentials() {
+                const demoItems = document.querySelectorAll('.demo-credential-value');
+                demoItems.forEach(item => {
+                    item.style.cursor = 'pointer';
+                    item.title = 'Click to use these credentials';
+                    
+                    item.addEventListener('click', () => {
+                        const credentials = item.textContent.split(' / ');
+                        if (credentials.length === 2) {
+                            document.getElementById('email').value = credentials[0];
+                            document.getElementById('password').value = credentials[1];
+                        }
+                    });
+                });
+            }
+
+            loadRememberMe() {
+                const savedEmail = localStorage.getItem('vzone_remembered_email');
+                const rememberCheckbox = document.getElementById('rememberMe');
+                const checkmark = document.querySelector('.checkmark');
+                
+                if (savedEmail) {
+                    document.getElementById('email').value = savedEmail;
+                    rememberCheckbox.checked = true;
+                    if (checkmark) {
+                        checkmark.setAttribute('aria-checked', 'true');
+                    }
+                }
+            }
+
+            saveRememberMe() {
+                const rememberCheckbox = document.getElementById('rememberMe');
+                const email = document.getElementById('email').value;
+                
+                if (rememberCheckbox.checked && email) {
+                    localStorage.setItem('vzone_remembered_email', email);
+                } else {
+                    localStorage.removeItem('vzone_remembered_email');
+                }
+            }
+
+            handleForgotPassword() {
+                const email = document.getElementById('email').value;
+                
+                if (!email) {
+                    this.showError('Please enter your email address first');
+                    return;
+                }
+
+                // Simulate forgot password process
+                this.showSuccess(`Password reset instructions have been sent to ${email}`);
+                
+                // In a real application, you would make an API call here
+                console.log('Forgot password request for:', email);
+            }
+
+            checkExistingSession() {
+                const currentUser = SessionManager.getCurrentUser();
+                if (currentUser) {
+                    // Redirect to appropriate dashboard based on user role
+                    this.redirectToDashboard(currentUser);
+                }
+            }
+
+            togglePasswordVisibility() {
+                const passwordInput = document.getElementById('password');
+                const toggleButton = document.getElementById('togglePassword');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    toggleButton.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"/>
+                        </svg>
+                    `;
+                } else {
+                    passwordInput.type = 'password';
+                    toggleButton.innerHTML = `
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                        </svg>
+                    `;
+                }
+            }
+
+            async handleLogin() {
+                if (this.isLoading) return;
+
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+
+                // Basic validation
+                if (!email || !password) {
+                    this.showError('Please fill in all fields');
+                    return;
+                }
+
+                this.setLoading(true);
+                this.hideError();
+
+                try {
+                    // Save remember me preference
+                    this.saveRememberMe();
+
+                    // Debug logging
+                    console.log('Attempting login with:', { email, password: '***' });
+
+                    // Simulate authentication delay
+                    await this.delay(1500);
+
+                    // Validate credentials
+                    const userInfo = this.validateCredentials(email, password);
+                    
+                    console.log('Validation result:', userInfo);
+                    
+                    if (userInfo) {
+                        // Create user session
+                        const user = {
+                            id: 1,
+                            email: email,
+                            name: userInfo.name,
+                            type: userInfo.type,
+                            role: userInfo.role,
+                            loginTime: new Date().toISOString()
+                        };
+
+                        SessionManager.createSession(user);
+                        
+                        // Show success and redirect
+                        this.showSuccess('Login successful! Redirecting...');
+                        
+                        setTimeout(() => {
+                            this.redirectToDashboard(user);
+                        }, 1000);
+
+                    } else {
+                        console.error('Login validation failed for:', email);
+                        this.showError('Invalid email or password');
+                    }
+
+                } catch (error) {
+                    console.error('Login error:', error);
+                    this.showError('Login failed. Please try again.');
+                } finally {
+                    this.setLoading(false);
+                }
+            }
+
+            validateCredentials(email, password) {
+                // Demo credentials validation
+                const validCredentials = [
+                    { 
+                        email: 'demo@vzone.com', 
+                        password: 'demo123', 
+                        name: 'Demo User',
+                        type: 'vzone',
+                        role: 'User'
+                    },
+                    { 
+                        email: 'admin@vzone.com', 
+                        password: 'admin123', 
+                        name: 'System Administrator',
+                        type: 'xzone',
+                        role: 'Administrator'
+                    }
+                ];
+
+                // First check exact matches
+                const matchedUser = validCredentials.find(cred => 
+                    cred.email.toLowerCase() === email.toLowerCase() && 
+                    cred.password === password
+                );
+
+                if (matchedUser) {
+                    return matchedUser;
+                }
+
+                // Fallback for demo - allow any valid email/password combination
+                if (email.includes('@') && password.length >= 3) {
+                    const isAdmin = email.toLowerCase().includes('admin');
+                    return {
+                        name: this.getUserName(email),
+                        type: isAdmin ? 'xzone' : 'vzone',
+                        role: isAdmin ? 'Administrator' : 'User'
+                    };
+                }
+
+                return null;
+            }
+
+            getUserName(email) {
+                if (email === 'demo@vzone.com') return 'Demo User';
+                if (email === 'admin@vzone.com') return 'System Administrator';
+                return email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
+            }
+
+            redirectToDashboard(user) {
+                // Clear any stored dashboard request
+                sessionStorage.removeItem('requestedDashboard');
+                
+                // Use requested dashboard if it matches user type, otherwise use user's default
+                let targetDashboard = user.type;
+                
+                if (this.requestedDashboard) {
+                    // Verify user has access to requested dashboard
+                    if (this.requestedDashboard === 'vzone' && user.type === 'vzone') {
+                        targetDashboard = 'vzone';
+                    } else if (this.requestedDashboard === 'xzone' && user.type === 'xzone') {
+                        targetDashboard = 'xzone';
+                    } else {
+                        // User doesn't have access to requested dashboard, show error
+                        this.showError(`Access denied: You don't have permission to access ${this.requestedDashboard.toUpperCase()} Dashboard`);
+                        return;
+                    }
+                }
+                
+                if (targetDashboard === 'vzone') {
+                    window.location.href = 'VZoneDashboard/index.html';
+                } else if (targetDashboard === 'xzone') {
+                    window.location.href = 'XZoneDashboard/index.html';
+                }
+            }
+
+            setLoading(loading) {
+                this.isLoading = loading;
+                const loginButton = document.getElementById('loginButton');
+                
+                if (loading) {
+                    loginButton.classList.add('loading');
+                    loginButton.disabled = true;
+                } else {
+                    loginButton.classList.remove('loading');
+                    loginButton.disabled = false;
+                }
+            }
+
+            showError(message) {
+                const errorMessage = document.getElementById('errorMessage');
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+            }
+
+            hideError() {
+                const errorMessage = document.getElementById('errorMessage');
+                errorMessage.style.display = 'none';
+            }
+
+            showSuccess(message) {
+                const errorMessage = document.getElementById('errorMessage');
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                errorMessage.style.background = 'rgba(40, 167, 69, 0.1)';
+                errorMessage.style.color = 'var(--success-color)';
+            }
+
+            delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        }
+
+        // Initialize login manager when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            new LoginManager();
+        });
+    </script>
+</body>
+</html>
